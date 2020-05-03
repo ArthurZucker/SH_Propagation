@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ControlGame.gd" type="Script" id=1]
+[ext_resource path="res://Camera.gd" type="Script" id=2]
+[ext_resource path="res://Dialog.gd" type="Script" id=6]
+
+[node name="ControlGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( -1.0554e-07, -0.76181, 0.647801, -1.24115e-07, 0.647801, 0.76181, -1, 7.10543e-15, -1.62921e-07, 10, 10, 0 )
+script = ExtResource( 2 )
+
+[node name="Board" type="MeshInstance" parent="Spatial"]
+
+[node name="Dialog" type="Node2D" parent="Spatial"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Spatial/Dialog"]
+visible = false
+position = Vector2( 507, 440 )
+scale = Vector2( 0.953125, 0.828125 )
+
+[node name="Score" type="Sprite" parent="Spatial/Dialog"]
+position = Vector2( 79.114, 378.921 )
+
+[node name="ButtonMenu" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Menu principal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
