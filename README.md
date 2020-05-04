@@ -29,10 +29,10 @@ Code : Action : Carte face visible / face caché
 
 # Format gimp :
 
-  1. Ouvrir Gimp, ouvir l'image template
+  1. Ouvrir Gimp, ouvir l'image template dans le dossier post_images/tempale.jpg
   3. Re-size le recto à ajouter (rogner) en 690x990, position (10,22)
   4. Copier  l'images coller sur l'image de taille 2048x1470
-  5. Clique droit sur les image dans l'onglet à droite, add to new layer ![étapes](screen_layer.png)
+  5. Clique droit sur les image dans l'onglet à droite, add to new layer ![étapes](screen_layer1.png)
   6. Resize l'image pour une width de 1024 et la mettre cote à cote
   7. Export as jpg, quality 100
 
