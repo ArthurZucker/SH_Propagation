@@ -29,12 +29,11 @@ Code : Action : Carte face visible / face caché
 
 # Format gimp :
 
-  1. Ouvrir Gimp, create>new>format>2048x1470 (2048 etant la width donc longueur)
-  2. Ouvrir les deux images que l'on veux coller
-  3. Re-size les images (rogner) en 690x990, position (10,22)
-  4. Copier les images une par une et les coller sur l'image de taille 2048x1470
+  1. Ouvrir Gimp, ouvir l'image template
+  3. Re-size le recto à ajouter (rogner) en 690x990, position (10,22)
+  4. Copier  l'images coller sur l'image de taille 2048x1470
   5. Clique droit sur les image dans l'onglet à droite, add to new layer ![étapes](screen_layer.png)
-  6. Resize les images pour une widht de 1024 et les mettre cote à cote
+  6. Resize l'image pour une width de 1024 et la mettre cote à cote
   7. Export as jpg, quality 100
 
 ## Répartition :
