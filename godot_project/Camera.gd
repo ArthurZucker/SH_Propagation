@@ -6,7 +6,9 @@ var coef=15.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
 
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.get_connected_joypads().size() > 0:
@@ -23,3 +25,4 @@ func _process(delta):
 		if abs(xAxis1)>0.1:
 			translation.y+=delta * xAxis1 * coef
 #       pass
+	
