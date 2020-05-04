@@ -26,3 +26,20 @@ Code : Action : Carte face visible / face caché
  Arthur : Faire un carte modèle puis expliquer comment faire les cartes sur gimp
  Tout le monde : Faire les cartes sur gimp
  En attendant : Clément, Younes et Boudi: voir vidéo en pensant à comment adapter le code selon notre jeu (communication etc.. )  
+
+# Format gimp :
+
+  1. Ouvrir Gimp, create>new>format>2048x1470 (2048 etant la width donc longueur)
+  2. Ouvrir les deux images que l'on veux coller
+  3. Re-size les images (rogner) en 690x990, position (10,22)
+  4. Copier les images une par une et les coller sur l'image de taille 2048x1470
+  5. Clique droit sur les image dans l'onglet à droite, add to new layer ![étapes](screen_layer.png)
+  6. Resize les images pour une widht de 1024 et les mettre cote à cote
+  7. Export as jpg, quality 100
+
+## Répartition :
+ -  Chacun fait 8 carte (4x8=32)
+
+ | Image | Younes | Arthur | Clément | Boudhi |   |
+ |-------|--------|--------|---------|--------|---|
+ |       | 33->41       | 25->32     |42->50| 51->58    |   |
