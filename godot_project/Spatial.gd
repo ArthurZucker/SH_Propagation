@@ -34,7 +34,7 @@ func _ready():
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 	
 	for i in range(len(cardNames)):
-		cardNodes[i]=createBig(0,0,1*i,(randf() * (0.1)) -0.05,cardNames[i])
+		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,0,(randf() * (0.2)) -0.1,cardNames[i])
 	
 
 	
@@ -48,6 +48,7 @@ func createBig(x,y,z,rv,cname):
 		mi.set_rotation(Vector3(0,0,PI))
 	else:
 		mi.set_rotation(Vector3(0,rv,0)) #petite rotation pour l'effet de carte
+		mi.set_rotation(Vector3(0,0,PI))
 	# load the tile mesh
 	var meshObj=load("res://final_carde002.obj")
 	# and assign the mesh instance with it
