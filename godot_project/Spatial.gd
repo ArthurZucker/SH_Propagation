@@ -50,7 +50,7 @@ func createBig(x,y,z,rv,cname):
 		mi.set_rotation(Vector3(0,rv,0)) #petite rotation pour l'effet de carte
 		mi.set_rotation(Vector3(0,0,PI))
 	# load the tile mesh
-	var meshObj=load("res://final_carde002.obj")
+	var meshObj=load("res://final_carde005.obj")
 	# and assign the mesh instance with it
 	mi.mesh=meshObj
 	# create a new spatial material for the tile

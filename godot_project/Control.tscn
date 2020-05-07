@@ -16,4 +16,6 @@ __meta__ = {
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera" parent="Spatial"]
+transform = Transform( 1, 0, 0, 0, 0.968964, 0.247202, 0, -0.247202, 0.968964, 0.0399538, 1.43246, 1.22118 )
+fov = 91.2403
 script = ExtResource( 2 )

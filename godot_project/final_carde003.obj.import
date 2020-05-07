@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/final_carde003.obj-8370f807d0914e5486c245ad7c289acb.mesh"
+
+[deps]
+
+files=[ "res://.import/final_carde003.obj-8370f807d0914e5486c245ad7c289acb.mesh" ]
+
+source_file="res://final_carde003.obj"
+dest_files=[ "res://.import/final_carde003.obj-8370f807d0914e5486c245ad7c289acb.mesh", "res://.import/final_carde003.obj-8370f807d0914e5486c245ad7c289acb.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
