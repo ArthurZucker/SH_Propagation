@@ -11,7 +11,7 @@ var cardNames=[	"res://carte01.jpg","res://carte02.jpg","res://carte03.jpg","res
 				"res://carte17.jpg","res://carte18.jpg","res://carte19.jpg","res://carte20.jpg",
 				"res://carte21.jpg","res://carte22.jpg","res://carte23.jpg","res://carte24.jpg",
 				"res://carte25.jpg","res://carte26.jpg","res://carte27.jpg","res://carte28.jpg",
-				"res://carte29.jpg","res://carte30.jpg","res://carte33.jpg","res://carte32.jpg",
+				"res://carte29.jpg","res://carte30.jpg","res://carte31.jpg","res://carte32.jpg",
 				]
 
 
@@ -35,8 +35,11 @@ func _ready():
 	
 	for i in range(len(cardNames)):
 		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,0,(randf() * (0.2)) -0.1,cardNames[i])
-	
-
+	#test par clement le boss:
+	var card = createBig(10,1,1,1,cardNames[0])	
+	card._setEndPosition(card.get_translation())
+	card.toBeMoved=1
+	card.flip=0
 	
 
 func createBig(x,y,z,rv,cname):
@@ -96,3 +99,9 @@ func revealCard(v):
 	mesh.toBeMoved=1
 	mesh.flip=1
 
+#Fais par clément donc pas sur que ça marche:
+func hideCard(v):
+	var mesh=cardNodes[v]
+	mesh._setEndPosition(cardNodes[v].get_translation())
+	mesh.toBeMoved=1
+	mesh.flip=0
