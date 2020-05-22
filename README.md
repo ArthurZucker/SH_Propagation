@@ -22,6 +22,10 @@ Projet de jeu en GODOT
 Graphique : Carte et plateau
 Code : Action : Carte face visible / face caché
 
+# Fonctionnement
+  Un pc central => UDP serveur en c, on met la mécanique du jeu
+  godot communication caméra/joysticks vers pc central. serveur en c et application godot => udp pour faire communiquer les deux
+
 # Organisation du projet
  Arthur : Faire un carte modèle puis expliquer comment faire les cartes sur gimp
  Tout le monde : Faire les cartes sur gimp
