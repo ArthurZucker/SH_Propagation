@@ -42,14 +42,14 @@ func _thread_function(userdata):
 				print ("R",v)
 				spatialNode.revealCard(v)
 				spatialNode.moveCardCounter(v)
-			elif (mess[0]=='C'):
-				print ("message CLUE")
+			elif (mess[0]=='H'):
+				print ("message HIDE")
 				var d=int(mess[1])
 				var u=int(mess[2])
 				var v=d*10+u
-				print ("C",v)
-				spatialNode.revealClue(v)
-				spatialNode.moveClueCounter(v)
+				print ("H",v)
+				spatialNode.hideCard(v)
+				spatialNode.moveHideCounter(v)
 			elif (mess[0]=='S'):
 				print ("message SCORE")
 				var d=int(mess[1])
