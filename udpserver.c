@@ -23,10 +23,12 @@ struct _client
 
 int nbClients;
 int deck[32]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
+int deckBadCard[32]={0,0,-1,-1,-1,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,0};//{3,4,5,8,9,10,11,15,16,17,18,19,20,30,31}
 // 3 cartes par personne
 int tableCartes[4][3];
 int fsmServer;
 int joueurCourant;
+int tableScore[4];
 
 void melangerDeck()
 {
@@ -236,6 +238,7 @@ int main()
 					strcpy(udpClients[i].ipAddress,"localhost");
 					udpClients[i].port=-1;
 					strcpy(udpClients[i].name,"-");
+					tableScore[i]=0;
 	}
 
 	while (1)
@@ -305,15 +308,26 @@ int main()
 					// revealCard
 					case 'R':
 						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
-						//faire les bails (attribuer score ou pas si carte utile)
+						// faire les bails (attribuer score ou pas si carte utile)
+						tableScore[id_joueur]+=deckBadCard[num_card-1]
+						// on partage la carte revele
+						sprintf(reply,"R %d",num_card);
+						broadcastMessage(reply);
+						//on lui donne une carte
+						//carte=head->suivant.num_card
+						//sprintf(reply,"D %d",head->suivant.num_card);
 					break;
 					// hideCard
 					case 'H':
 						sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-						//faire les bails
+						sprintf(reply,"H %d",num_card);
+						broadcastMessage(reply);
+						//on lui donne une carte
+						//sprintf(reply,"D %d",);
 					break;
 				}
 			}
+			// else if( head->suivant==NULL)
 	}
 	close(sockfd);
 	return 0;
