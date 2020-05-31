@@ -21,7 +21,14 @@ struct _client
 	int etat;
 }udpClients[4];
 
+typedef struct chaine
+{
+	int num_card;
+	struct chaine *suivant;
+}Chaine;
+
 int nbClients;
+int answers[10] = {1,3,1,2,1,2,3,3,4,3};
 int deck[32]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
 int deckBadCard[32]={0,0,-1,-1,-1,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,0};//{3,4,5,8,9,10,11,15,16,17,18,19,20,30,31}
 // 3 cartes par personne
@@ -46,6 +53,32 @@ void melangerDeck()
 	}
 }
 
+void printL(Chaine* chaine){
+ 	Chaine *temp = chaine;
+	while(temp->suivant != NULL){
+		printf("%d->",temp->num_card );
+		temp = temp->suivant;
+	}
+	printf("%d\n",temp->num_card );
+}
+int piocher_carte(Chaine *head){
+	int temp = head->num_card;
+	*head = *head->suivant;
+	return temp;
+}
+Chaine *init_pioche(){
+	Chaine *head = (Chaine *)malloc(sizeof(Chaine));
+	head->num_card = deck[12];
+	head->suivant = NULL;
+	Chaine *temp = head;
+	for (size_t i = 13; i < 32; i++) {
+		temp->suivant = (Chaine *)malloc(sizeof(Chaine));
+		temp->suivant->num_card = deck[i];
+		temp = temp->suivant;
+	}
+	temp->suivant=NULL;
+	return head;
+}
 // Pour attribuer les cartes
 // void createTable()
 // {
@@ -200,7 +233,6 @@ int main()
 	int sockfd;
 	char buffer[MAXLINE];
 	struct sockaddr_in servaddr, cliaddr;
-
 	char reply[256];
 	int id;
 	char com;
@@ -230,9 +262,10 @@ int main()
 	}
 
 	int len, n;
-
-	len = sizeof(cliaddr); //len is value/resuslt
-
+	melangerDeck();
+	Chaine *head = init_pioche();
+	joueurCourant = 0;
+	int answered = 0;
 	for (int i=0;i<4;i++)
 	{
 					strcpy(udpClients[i].ipAddress,"localhost");
@@ -248,7 +281,6 @@ int main()
 				&len);
 		//printf("n=%d\n",n);
 		buffer[n] = '\0';
-
 		if (fsmServer==0)
 		{
 			switch (buffer[0])
@@ -299,35 +331,81 @@ int main()
 					break;
 				}
 			}
-			else if (fsmServer==1)
+			else if (fsmServer==1 )
 			{
 				int num_card;
 				int id_joueur;
-				// mettre en place le jeu en fonction des messages
-				switch (buffer[0]){
-					// revealCard
-					case 'R':
-						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
-						// faire les bails (attribuer score ou pas si carte utile)
-						tableScore[id_joueur]+=deckBadCard[num_card-1];
-						// on partage la carte revele
-						sprintf(reply,"R %d",num_card);
+				if (head != NULL) {
+
+					// mettre en place le jeu en fonction des messages
+					switch (buffer[0]){
+						// revealCard
+						case 'R':
+							sscanf(buffer,"R %d %d",&id_joueur,&num_card);
+							// faire les bails (attribuer score ou pas si carte utile)
+							tableScore[id_joueur]+=deckBadCard[num_card-1];
+							// on partage la carte revele
+							sprintf(reply,"R %d",num_card);
+							broadcastMessage(reply);
+							//on lui donne une carte
+							sprintf(reply,"D %d",piocher_carte(head));
+							joueurCourant++;
+			        joueurCourant=joueurCourant%4;
+			        while(udpClients[joueurCourant].etat==0){
+			          joueurCourant++;
+			          joueurCourant=joueurCourant%4;
+			        }
+			        sprintf(reply,"M %d",joueurCourant);
+			        broadcastMessage(reply);
+							break;
+						// hideCard
+						case 'H':
+							sscanf(buffer,"H %d %d",&id_joueur,&num_card);
+							sprintf(reply,"H %d",num_card);
+							broadcastMessage(reply);
+							//on lui donne une carte
+							sprintf(reply,"D %d",piocher_carte(head));
+							joueurCourant++;
+			        joueurCourant=joueurCourant%4;
+			        while(udpClients[joueurCourant].etat==0){
+			          joueurCourant++;
+			          joueurCourant=joueurCourant%4;
+			        }
+			        sprintf(reply,"M %d",joueurCourant);
+			        broadcastMessage(reply);
+							break;
+						}
+					}
+					else if(answered<4){
+						//end game here
+						sprintf(reply,"Q");
 						broadcastMessage(reply);
-						//on lui donne une carte
-						//carte=head->suivant.num_card
-						//sprintf(reply,"D %d",head->suivant.num_card);
-					break;
-					// hideCard
-					case 'H':
-						sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-						sprintf(reply,"H %d",num_card);
+						int replies[10];
+						sscanf(buffer,"Q %d %d %d %d %d %d %d %d %d %d %d",&id_joueur,&replies[0],&replies[1],&replies[2],&replies[3],&replies[4],&replies[5],&replies[6],&replies[7],&replies[8],&replies[9]);
+						for (size_t i = 0; i < 10; i++) {
+							if (replies[i] == answers[i])
+								tableScore[id_joueur]+=2;
+
+						}
+						answered++;
+						if (answered<4) {
+							joueurCourant++;
+							joueurCourant=joueurCourant%4;
+							while(udpClients[joueurCourant].etat==0){
+								joueurCourant++;
+								joueurCourant=joueurCourant%4;
+							}
+							sprintf(reply,"M %d",joueurCourant);
+							broadcastMessage(reply);
+						}
+					}
+					else{
+						sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 						broadcastMessage(reply);
-						//on lui donne une carte
-						//sprintf(reply,"D %d",);
-					break;
-				}
+						fsmServer=0;
+						// to fo finish game here
+					}
 			}
-			// else if( head->suivant==NULL)
 	}
 	close(sockfd);
 	return 0;
