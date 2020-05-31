@@ -254,31 +254,31 @@ int main()
 			switch (buffer[0])
 			{
 				case 'C':
-								sscanf(buffer,"%c %s %d %s", &com, clientIpAddress, &clientPort, clientName);
-								printf("COM=%c ipAddress=%s port=%d name=%s\n",com, clientIpAddress, clientPort, clientName);
+					sscanf(buffer,"%c %s %d %s", &com, clientIpAddress, &clientPort, clientName);
+					printf("COM=%c ipAddress=%s port=%d name=%s\n",com, clientIpAddress, clientPort, clientName);
 
-								// fsmServer==0 alors j'attends les connexions de tous les joueurs
-								strcpy(udpClients[nbClients].ipAddress,clientIpAddress);
-								udpClients[nbClients].port=clientPort;
-								strcpy(udpClients[nbClients].name,clientName);
-								udpClients[nbClients].etat=1;
-								nbClients++;
+					// fsmServer==0 alors j'attends les connexions de tous les joueurs
+					strcpy(udpClients[nbClients].ipAddress,clientIpAddress);
+					udpClients[nbClients].port=clientPort;
+					strcpy(udpClients[nbClients].name,clientName);
+					udpClients[nbClients].etat=1;
+					nbClients++;
 
-								printClients();
+					printClients();
 
-								// rechercher l'id du joueur qui vient de se connecter
-								id=findClientByName(clientName);
-								printf("id=%d\n",id);
+					// rechercher l'id du joueur qui vient de se connecter
+					id=findClientByName(clientName);
+					printf("id=%d\n",id);
 
-								// lui envoyer un message personnel pour lui communiquer son id
-								sprintf(reply,"I %d",id);
-								sendMessageToGodotClient(udpClients[id].ipAddress,
-									udpClients[id].port,
-									reply);
+					// lui envoyer un message personnel pour lui communiquer son id
+					sprintf(reply,"I %d",id);
+					sendMessageToGodotClient(udpClients[id].ipAddress,
+						udpClients[id].port,
+						reply);
 
-								// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
-								sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
-								broadcastMessage(reply);
+					// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
+					sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
+					broadcastMessage(reply);
 
 					// Si le nombre de joueurs atteint 4, alors on peut lancer le jeu
 					if (nbClients==4)
@@ -309,7 +309,7 @@ int main()
 					case 'R':
 						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
 						// faire les bails (attribuer score ou pas si carte utile)
-						tableScore[id_joueur]+=deckBadCard[num_card-1]
+						tableScore[id_joueur]+=deckBadCard[num_card-1];
 						// on partage la carte revele
 						sprintf(reply,"R %d",num_card);
 						broadcastMessage(reply);
