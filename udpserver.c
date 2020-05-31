@@ -31,8 +31,7 @@ int nbClients;
 int answers[10] = {1,3,1,2,1,2,3,3,4,3};
 int deck[32]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
 int deckBadCard[32]={0,0,-1,-1,-1,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,0};//{3,4,5,8,9,10,11,15,16,17,18,19,20,30,31}
-// 3 cartes par personne
-int tableCartes[4][3];
+
 int fsmServer;
 int joueurCourant;
 int tableScore[4];
@@ -79,50 +78,6 @@ Chaine *init_pioche(){
 	temp->suivant=NULL;
 	return head;
 }
-// Pour attribuer les cartes
-// void createTable()
-// {
-// 	// Le joueur 0 possede les cartes d'indice 0,1,2
-// 	// Le joueur 1 possede les cartes d'indice 3,4,5
-// 	// Le joueur 2 possede les cartes d'indice 6,7,8
-// 	// Le joueur 3 possede les cartes d'indice 9,10,11
-// 	// Le coupable est la carte d'indice 12
-// 	int i,j,c;
-//
-// 	for (i=0;i<4;i++)
-// 		for (j=0;j<3;j++)
-// 			tableCartes[i][j]=0;
-//
-// 	for (i=0;i<4;i++)
-// 	{
-// 		for (j=0;j<3;j++)
-// 		{
-// 			c=deck[i*3+j];
-// 			switch (c)
-// 			{
-// 				case 0:
-// 					tableCartes[i][7]++;
-// 					tableCartes[i][2]++;
-// 					break;
-// 				case 1: // Irene Adler
-// 					tableCartes[i][7]++;
-// 					tableCartes[i][1]++;
-// 					tableCartes[i][5]++;
-// 					break;
-// 				case 2:
-// 					tableCartes[i][3]++;
-// 					tableCartes[i][6]++;
-// 					tableCartes[i][4]++;
-// 					break;
-// 				case 3:
-// 					tableCartes[i][3]++;
-// 					tableCartes[i][2]++;
-// 					tableCartes[i][4]++;
-// 					break;
-// 			}
-// 		}
-// 	}
-// }
 
 void printClients()
 {
@@ -303,11 +258,21 @@ int main()
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id
+
 					sprintf(reply,"I %d",id);
 					sendMessageToGodotClient(udpClients[id].ipAddress,
 						udpClients[id].port,
 						reply);
 
+					// Envoyer les 32 indices du mélange
+					/*
+
+						|			N     E
+						P   	|			|
+						|			O     S
+
+					Impossible de se déplacer à un z<10cm au dessus de la table (pas de triche)
+					*/
 					// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
 					sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
 					broadcastMessage(reply);
@@ -315,11 +280,9 @@ int main()
 					// Si le nombre de joueurs atteint 4, alors on peut lancer le jeu
 					if (nbClients==4)
 					{
-						// On envoie les cartes aux joueurs, ainsi que la ligne qui leur corresponds dans tableCartes
+						// On envoie les cartes aux joueurs
 						for(int i=0;i<4;i++){
 							sprintf(reply,"D %d %d %d",deck[3*i],deck[3*i+1],deck[3*i+2]);
-							sendMessageToGodotClient(udpClients[i].ipAddress,udpClients[i].port,reply);
-							sprintf(reply,"V %d %d %d",tableCartes[i][0],tableCartes[i][1],tableCartes[i][2]);
 							sendMessageToGodotClient(udpClients[i].ipAddress,udpClients[i].port,reply);
 						}
 						// On envoie le premier joueur qui doit jouer
