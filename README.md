@@ -12,11 +12,12 @@ Projet de jeu en GODOT
 
 # Taches à effectuer
 - [x] Une carte exemple de la bonne taille à faire sur blender puis rassembler photo carte recto verso avec gimp selon les dimensions que l'on a choisi
-- [ ] Un plateau de jeu à faire sur blender
 - [x] Faire fonctionner le client et se familisariser
-- [ ] Faire le script godot
+- [x] Faire un serveur
+- [x] Dégager l'ensemble des tâches ainsi que la mécanique du projet   
+- [ ] Un plateau de jeu à faire sur blender
+- [ ] Faire le script godot du client
 - [ ] Mettre la bande sonore d'introduction
-- [ ] Dégager l'ensemble des tâches ainsi que la mécanique du projet   
 - [ ] Ajouter ou pas des objets blenders pour les personnages (APRÈS)
 
 Graphique : Carte et plateau
