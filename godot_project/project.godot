@@ -21,8 +21,12 @@ _global_script_class_icons={
 [application]
 
 config/name="SH_propagation"
-run/main_scene="res://Control.tscn"
+run/main_scene="res://ControlSplash.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://global.gd"
 
 [rendering]
 

@@ -223,21 +223,18 @@ int main()
 	int answered = 0;
 	for (int i=0;i<4;i++)
 	{
-					strcpy(udpClients[i].ipAddress,"localhost");
-					udpClients[i].port=-1;
-					strcpy(udpClients[i].name,"-");
-					tableScore[i]=0;
+		strcpy(udpClients[i].ipAddress,"localhost");
+		udpClients[i].port=-1;
+		strcpy(udpClients[i].name,"-");
+		tableScore[i]=0;
 	}
-
 	while (1)
 	{
-		n = recvfrom(sockfd, (char *)buffer, MAXLINE,
-				MSG_WAITALL, ( struct sockaddr *) &cliaddr,
-				&len);
-		//printf("n=%d\n",n);
+		n = recvfrom(sockfd, (char *)buffer, MAXLINE,MSG_WAITALL, ( struct sockaddr *) &cliaddr,&len);
 		buffer[n] = '\0';
 		if (fsmServer==0)
 		{
+			printf("receive : %s\n",buffer );
 			switch (buffer[0])
 			{
 				case 'C':
@@ -260,9 +257,7 @@ int main()
 					// lui envoyer un message personnel pour lui communiquer son id
 
 					sprintf(reply,"I %d",id);
-					sendMessageToGodotClient(udpClients[id].ipAddress,
-						udpClients[id].port,
-						reply);
+					sendMessageToGodotClient(udpClients[id].ipAddress,udpClients[id].port,reply);
 
 					// Envoyer les 32 indices du mélange
 					/*

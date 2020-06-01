@@ -24,13 +24,13 @@ var cardNodes=[
 	null, null, null, null, null,
 	null, null, null, null, null,
 	null, null, null, null, null,
-	null, null, null, null, null,]
+	null, null, null, null, null]
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	spatialNode=get_tree().get_root().get_node("Control").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
+	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 	
 	for i in range(len(cardNames)):
