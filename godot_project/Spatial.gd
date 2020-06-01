@@ -77,7 +77,7 @@ func hideCard(v):
 	mesh.toBeMoved=1
 	mesh.flip=0
 	
-func handCard():
+func handMyCard():
 	print("cards being handled")
 	for i in range(3):
 		var card = global.controlGameNode.my_cards[i]
@@ -87,10 +87,27 @@ func handCard():
 			mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,i,5))
 			mesh.toBeMoved=1
 			mesh.flip=0.25
-			
+
+func handCards(data):
+	var id_player = data[0]
+	for i in range(3):
+		var num_card = data[i+1]
+		var mesh=cardNodes[num_card-1]
+		mesh._setEndPosition(global.pos[id_player]+Vector3(0,i,5))
+		mesh.toBeMoved=1
+		mesh.flip=0.25
+	
 func drawCard(v):
 	var card = global.controlGameNode.my_cards[v]
 	var mesh=cardNodes[card-1]
 	mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,v,5))
+	mesh.toBeMoved=1
+	mesh.flip=0.5
+
+func drawCards(data):
+	var id_player = data[0]
+	var num_card = data[1]
+	var mesh=cardNodes[num_card-1]
+	mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,5))#mettre toujoours à droite du jeu
 	mesh.toBeMoved=1
 	mesh.flip=0.5

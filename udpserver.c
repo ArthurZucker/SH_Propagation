@@ -280,8 +280,8 @@ int main()
 					{
 						// On envoie les cartes aux joueurs
 						for(int i=0;i<4;i++){
-							sprintf(reply,"D %d %d %d",deck[3*i],deck[3*i+1],deck[3*i+2]);
-							sendMessageToGodotClient(udpClients[i].ipAddress,udpClients[i].port,reply);
+							sprintf(reply,"D %d %d %d %d",i,deck[3*i],deck[3*i+1],deck[3*i+2]);
+							broadcastMessage(reply);
 						}
 						// On envoie le premier joueur qui doit jouer
 						sprintf(reply,"M %d",joueurCourant);
@@ -326,7 +326,7 @@ int main()
 							sprintf(reply,"H %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"P %d",piocher_carte(head));
+							sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
 							broadcastMessage(reply);
 
 							joueurCourant++;

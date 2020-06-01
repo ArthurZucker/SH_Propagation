@@ -27,19 +27,24 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'M': if(int(arra[0])==id_joueur): play=true
 		'D':
-			print('D...............................................')
-			for i in range(3):
-				my_cards[i]=int(arra[i])
-			get_node("Spatial").handCard()
-			for i in range(3): 
-				print(my_cards[i])
-			print('D...............................................')
-		'P': for i in range(3):
-				if(my_cards[i]==null):
-					my_cards[i]=int(arra[0])
-					get_node("Spatial").drawCard(i)
+			if(int(arra[0])==id_joueur):
+				for i in range(3):
+					my_cards[i]=int(arra[i+1])
+				get_node("Spatial").handMyCard()
+			else:
+				get_node("Spatial").handCards(arra)
 		'H': get_node("Spatial").hideCard(int(arra[1]))
 		'R': get_node("Spatial").revealCard(int(arra[1]))
+		'P': #faire décaler le jeu la carte qui est joué
+			if(int(arra[0])==id_joueur):
+				#for i in range(3):
+					#if(my_cards[i]==null):
+						#my_cards[i]=int(arra[1])
+						#get_node("Spatial").drawCard(i)
+				my_cards[2]=int(arra[1])
+				get_node("Spatial").drawCard(2)
+			else:
+				get_node("Spatial").drawCards(arra)
 		'Q': 
 			var root=get_tree().get_root()
 			var myself=root.get_child(1)
