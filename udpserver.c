@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <netdb.h>
-
+#include <time.h>
 #define PORT	 4242
 #define MAXLINE 1024
 
@@ -60,11 +60,13 @@ void printL(Chaine* chaine){
 	}
 	printf("%d\n",temp->num_card );
 }
+
 int piocher_carte(Chaine *head){
 	int temp = head->num_card;
 	*head = *head->suivant;
 	return temp;
 }
+
 Chaine *init_pioche(){
 	Chaine *head = (Chaine *)malloc(sizeof(Chaine));
 	head->num_card = deck[12];
@@ -92,8 +94,8 @@ int findClientByName(char *name)
 	int i;
 
 	for (i=0;i<nbClients;i++)
-	if (strcmp(udpClients[i].name,name)==0)
-	return i;
+		if (strcmp(udpClients[i].name,name)==0)
+			return i;
 	return -1;
 }
 
@@ -185,6 +187,7 @@ void broadcastMessage(char *mess)
 
 int main()
 {
+	srand(time(NULL));
 	int sockfd;
 	char buffer[MAXLINE];
 	struct sockaddr_in servaddr, cliaddr;
@@ -294,7 +297,6 @@ int main()
 				int num_card;
 				int id_joueur;
 				if (head != NULL) {
-
 					// mettre en place le jeu en fonction des messages
 					switch (buffer[0]){
 						// revealCard
@@ -303,10 +305,12 @@ int main()
 							// faire les bails (attribuer score ou pas si carte utile)
 							tableScore[id_joueur]+=deckBadCard[num_card-1];
 							// on partage la carte revele
-							sprintf(reply,"R %d",num_card);
+							sprintf(reply,"R %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"D %d",piocher_carte(head));
+							sprintf(reply,"P %d",piocher_carte(head));
+							broadcastMessage(reply);
+
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
 			        while(udpClients[joueurCourant].etat==0){
@@ -319,10 +323,12 @@ int main()
 						// hideCard
 						case 'H':
 							sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-							sprintf(reply,"H %d",num_card);
+							sprintf(reply,"H %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"D %d",piocher_carte(head));
+							sprintf(reply,"P %d",piocher_carte(head));
+							broadcastMessage(reply);
+
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
 			        while(udpClients[joueurCourant].etat==0){

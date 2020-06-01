@@ -8,9 +8,11 @@ var controlMenuNode
 var controlGameNode
 var controlOptionsNode
 var controlSplashNode
+var controlEndGameNode
+var controlScoreNode
 var ipAddress
 var direction
-
+var pos = [Vector3(-5,-5,0),Vector3(5,-5,0),Vector3(-5,5,0),Vector3(5,5,0)]
 var previous
 var current
 

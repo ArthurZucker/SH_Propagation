@@ -14,7 +14,7 @@ var cardNames=[	"res://carte01.jpg","res://carte02.jpg","res://carte03.jpg","res
 				"res://carte29.jpg","res://carte30.jpg","res://carte31.jpg","res://carte32.jpg",
 				]
 
-
+var melange
 
 var cardNodes=[
 	null, null, null, null, null,
@@ -24,7 +24,7 @@ var cardNodes=[
 	null, null, null, null, null,
 	null, null, null, null, null,
 	null, null, null, null, null,
-	null, null, null, null, null]
+	null, null]
 
 
 
@@ -35,11 +35,7 @@ func _ready():
 	
 	for i in range(len(cardNames)):
 		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,0,(randf() * (0.2)) -0.1,cardNames[i])
-	#test par clement le boss:
-	var card = createBig(10,1,1,1,cardNames[0])	
-	card._setEndPosition(card.get_translation())
-	card.toBeMoved=1
-	card.flip=0
+			
 	
 
 func createBig(x,y,z,rv,cname):
@@ -68,30 +64,6 @@ func createBig(x,y,z,rv,cname):
 	# add the newly created instance as a child of the Origine3D Node
 	spatialNode.add_child(mi)
 	return mi
-	
-func createSmall(x,y,z,rv,cname):
-	# Create a new card instance
-	var mi=myMeshResource.new()
-	# and translate it to its final position
-	mi.set_translation(Vector3(x,y,z))
-	if (rv==1):
-		mi.set_rotation(Vector3(0,0,PI))
-	# load the tile mesh
-	var meshObj=load("res://indice01.obj")
-	# and assign the mesh instance with it
-	mi.mesh=meshObj
-	# create a new spatial material for the tile
-	var surface_material=SpatialMaterial.new()
-	# and assign the material to the mesh instance
-	mi.set_surface_material(0,surface_material)
-	# create a new image texture that will be used as a tile texture
-	var texture=ImageTexture.new()
-	texture.load(cname)
-	# and perform the assignment to the surface_material
-	surface_material.albedo_texture=texture
-	# add the newly created instance as a child of the Origine3D Node
-	spatialNode.add_child(mi)
-	return mi
 
 func revealCard(v):
 	var mesh=cardNodes[v]
@@ -99,9 +71,26 @@ func revealCard(v):
 	mesh.toBeMoved=1
 	mesh.flip=1
 
-#Fais par clément donc pas sur que ça marche:
 func hideCard(v):
 	var mesh=cardNodes[v]
 	mesh._setEndPosition(cardNodes[v].get_translation())
 	mesh.toBeMoved=1
 	mesh.flip=0
+	
+func handCard():
+	print("cards being handled")
+	for i in range(3):
+		var card = global.controlGameNode.my_cards[i]
+		if(card!=null):
+			var mesh=cardNodes[card-1]
+			print(cardNames[card-1])
+			mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,i,5))
+			mesh.toBeMoved=1
+			mesh.flip=0.25
+			
+func drawCard(v):
+	var card = global.controlGameNode.my_cards[v]
+	var mesh=cardNodes[card-1]
+	mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,v,5))
+	mesh.toBeMoved=1
+	mesh.flip=0.5

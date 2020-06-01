@@ -26,7 +26,6 @@ script = ExtResource( 2 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="Spatial/Dialog"]
-visible = false
 position = Vector2( 507, 440 )
 scale = Vector2( 0.953125, 0.828125 )
 
