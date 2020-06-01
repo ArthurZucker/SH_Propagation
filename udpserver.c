@@ -60,11 +60,13 @@ void printL(Chaine* chaine){
 	}
 	printf("%d\n",temp->num_card );
 }
+
 int piocher_carte(Chaine *head){
 	int temp = head->num_card;
 	*head = *head->suivant;
 	return temp;
 }
+
 Chaine *init_pioche(){
 	Chaine *head = (Chaine *)malloc(sizeof(Chaine));
 	head->num_card = deck[12];
@@ -92,8 +94,8 @@ int findClientByName(char *name)
 	int i;
 
 	for (i=0;i<nbClients;i++)
-	if (strcmp(udpClients[i].name,name)==0)
-	return i;
+		if (strcmp(udpClients[i].name,name)==0)
+			return i;
 	return -1;
 }
 
@@ -294,7 +296,6 @@ int main()
 				int num_card;
 				int id_joueur;
 				if (head != NULL) {
-
 					// mettre en place le jeu en fonction des messages
 					switch (buffer[0]){
 						// revealCard
