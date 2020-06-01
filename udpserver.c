@@ -304,10 +304,12 @@ int main()
 							// faire les bails (attribuer score ou pas si carte utile)
 							tableScore[id_joueur]+=deckBadCard[num_card-1];
 							// on partage la carte revele
-							sprintf(reply,"R %d",num_card);
+							sprintf(reply,"R %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"D %d",piocher_carte(head));
+							sprintf(reply,"P %d",piocher_carte(head));
+							broadcastMessage(reply);
+
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
 			        while(udpClients[joueurCourant].etat==0){
@@ -320,10 +322,12 @@ int main()
 						// hideCard
 						case 'H':
 							sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-							sprintf(reply,"H %d",num_card);
+							sprintf(reply,"H %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"D %d",piocher_carte(head));
+							sprintf(reply,"P %d",piocher_carte(head));
+							broadcastMessage(reply);
+
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
 			        while(udpClients[joueurCourant].etat==0){

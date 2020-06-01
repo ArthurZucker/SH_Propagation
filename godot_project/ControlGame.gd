@@ -1,5 +1,9 @@
 extends Control
 
+var id_joueur
+var play
+var my_cards=[null,null,null]
+var liste_joueur=[null,null,null,null]
 
 func _ready():
 	pass # Replace with function body.
@@ -16,22 +20,33 @@ func _networkMessage(mess):
 	#Message reçu dans control Menu! No worries about anything
 	print ("_networkMessage=",mess)
 	match mess[0]:
-		'I': 
-			pass
-		'L':
-			pass
-		'M':
-			pass
-		'D':
-			pass
-		'H':
-			pass
-		'R':
-			pass
-		'Q':
-			pass
+		'I': id_joueur= mess[2]
+		'L': for i in range(4):
+				liste_joueur[i]=mess[2*(i+1)]
+		'M': if(mess[2]==id_joueur): play=true
+		'D': 
+			for i in range(3):
+				my_cards[i]=mess[2*(i+1)]
+			Spatial.handCard()
+			print('D...............................................')
+		'P': for i in range(3):
+				if(my_cards[i]==null):
+					my_cards[i]=mess[2]
+					Spatial.drawCard(i)
+		'H': Spatial.hideCard(mess[4])
+		'R': Spatial.hideCard(mess[4])
+		'Q': 
+			var root=get_tree().get_root()
+			var myself=root.get_child(1)
+			print (root,myself)
+			root.remove_child(myself)
+			root.add_child(global.controlEndGameNode)
 		'S':
-			pass
+			var root=get_tree().get_root()
+			var myself=root.get_child(1)
+			print (root,myself)
+			root.remove_child(myself)
+			root.add_child(global.controlScoreNode)
 
 func _on_ButtonMenu_pressed():
 	var root=get_tree().get_root()
@@ -58,27 +73,6 @@ func createTile(x,y,tilenum):
 	#texture.load(tileNames[tilenum])
 	# and perform the assignment to the surface_material
 	surface_material.albedo_texture=texture
-	# add the newly created instance as a child of the Origine3D Node
-	$Spatial.add_child(mi)
-	return mi
-	
-func createExplorer(x,y,num):
-	# Create a new tile instance
-	var mi=MeshInstance.new()
-	# and translate it to its final position
-	mi.set_translation(Vector3(x,0,y))
-	mi.set_rotation(Vector3(0,PI/2.0,0))
-	mi.set_scale(Vector3(0.5,0.5,0.5))
-	# load the tile mesh
-	var meshObj=load("res://final_card005.obj")
-	# and assign the mesh instance with it
-	mi.mesh=meshObj
-	# create a new spatial material for the tile
-	var surface_material=SpatialMaterial.new()
-	# set its color
-	#surface_material.albedo_color=explorerColor[num]
-	# and assign the material to the mesh instance
-	mi.set_surface_material(0,surface_material)
 	# add the newly created instance as a child of the Origine3D Node
 	$Spatial.add_child(mi)
 	return mi

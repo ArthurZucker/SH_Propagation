@@ -14,6 +14,9 @@ __meta__ = {
 margin_right = 12.0
 margin_bottom = 20.0
 text = "Jouer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ButtonOptions" type="Button" parent="."]
 margin_top = 40.0
