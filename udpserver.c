@@ -308,7 +308,7 @@ int main()
 							sprintf(reply,"R %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"P %d",piocher_carte(head));
+							sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
 							broadcastMessage(reply);
 
 							joueurCourant++;
