@@ -12,7 +12,7 @@ var controlEndGameNode
 var controlScoreNode
 var ipAddress
 var direction
-var pos = [Vector3(-10,0,-10),Vector3(10,0,-10),Vector3(-10,0,10),Vector3(10,0,10)] 
+var pos = [Vector3(-15,0,-15),Vector3(15,0,-15),Vector3(-15,0,15),Vector3(15,0,15)] 
 var previous
 var current
 

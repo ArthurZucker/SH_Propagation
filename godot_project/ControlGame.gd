@@ -6,7 +6,8 @@ var my_cards=[null,null,null]
 var liste_joueur=[null,null,null,null]
 var cpt_card_reveal=[0,0,0,0]
 var cpt_card_hide=[0,0,0,0]
-
+var empty_hand
+var test = 0 
 
 func _ready():
 	pass # Replace with function body.
@@ -30,33 +31,32 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'M': 
 			if(int(arra[0])==id_joueur): play=true
-			send_mess("H "+str(id_joueur)+" "+str(my_cards[0]))
-			get_node("Spatial").hideCard(id_joueur,my_cards[0])
+			send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
 					my_cards[i]=int(arra[i+1])
-				get_node("Spatial").handMyCard()
-			else:
-				get_node("Spatial").handCards(arra)
+			get_node("Spatial").handCard(arra)
 		'H':
 			var id_player = arra[0]
-			cpt_card_hide[id_player]= cpt_card_hide[id_player]+1
-			get_node("Spatial").hideCard(id_player,int(arra[1]))
+			var num_card = arra[1]
+			cpt_card_hide[id_player]=cpt_card_hide[id_player]+1
+			get_node("Spatial").hideCard(id_player,num_card)
+			for i in range(3):
+				if(my_cards[i]==num_card):
+					empty_hand=i
 		'R': 
 			var id_player = arra[0]
+			var num_card = arra[1]
 			cpt_card_reveal[id_player]= cpt_card_reveal[id_player]+1
-			get_node("Spatial").revealCard(id_player,int(arra[1]))
-		'P': #faire décaler le jeu la carte qui est joué
+			get_node("Spatial").revealCard(id_player,num_card)
+			for i in range(3):
+				if(my_cards[i]==num_card):
+					empty_hand=i
+		'P': 
 			if(int(arra[0])==id_joueur):
-				#for i in range(3):
-					#if(my_cards[i]==null):
-						#my_cards[i]=int(arra[1])
-						#get_node("Spatial").drawCard(i)
-				my_cards[0]=int(arra[1])
-				get_node("Spatial").drawCard(0)
-			else:
-				get_node("Spatial").drawCards(arra)
+				my_cards[empty_hand]=int(arra[1])
+			get_node("Spatial").drawCard(arra,empty_hand)
 		'Q': 
 			var root=get_tree().get_root()
 			var myself=root.get_child(1)

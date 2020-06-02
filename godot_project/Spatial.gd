@@ -14,8 +14,6 @@ var cardNames=[	"res://carte01.jpg","res://carte02.jpg","res://carte03.jpg","res
 				"res://carte29.jpg","res://carte30.jpg","res://carte31.jpg","res://carte32.jpg",
 				]
 
-var melange
-
 var cardNodes=[
 	null, null, null, null, null,
 	null, null, null, null, null,
@@ -67,46 +65,33 @@ func createBig(x,y,z,rv,cname):
 
 func revealCard(id_player,num_card):
 	var mesh=cardNodes[num_card-1]
-	mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,global.controlGameNode.cpt_card_reveal[id_player]*5))
+	mesh._setEndPosition(global.pos[id_player]+Vector3(5,0,global.controlGameNode.cpt_card_reveal[id_player]))
 	mesh.toBeMoved=1
+	mesh.set_rotation(Vector3(0,0,0))
 	mesh.flip=1
 
 func hideCard(id_player,num_card):
 	var mesh=cardNodes[num_card-1]
-	mesh._setEndPosition(global.pos[id_player]+Vector3(global.controlGameNode.cpt_card_hide[id_player]*5,0,0))
+	mesh._setEndPosition(global.pos[id_player]+Vector3(5,0,global.controlGameNode.cpt_card_reveal[id_player]))
 	mesh.toBeMoved=1
+	mesh.set_rotation(Vector3(0,0,0))
 	mesh.flip=0
 	
-func handMyCard():
-	print("cards being handled")
-	for i in range(3):
-		var num_card = global.controlGameNode.my_cards[i]
-		if(num_card!=null):
-			var mesh=cardNodes[num_card-1]
-			mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,0,i*5))#y hauteur , z coté
-			mesh.toBeMoved=1
-			mesh.flip=0.5
-
-func handCards(data):
+func handCard(data):
 	var id_player = data[0]
 	for i in range(3):
 		var num_card = data[i+1]
 		var mesh=cardNodes[num_card-1]
 		mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,i*5))
 		mesh.toBeMoved=1
-		mesh.flip=0.5
+		mesh.set_rotation(Vector3(0,0,1))
+		
 	
-func drawCard(v):
-	var num_card = global.controlGameNode.my_cards[v]
-	var mesh=cardNodes[num_card-1]
-	mesh._setEndPosition(global.pos[global.controlGameNode.id_joueur]+Vector3(0,v,0))
-	mesh.toBeMoved=1
-	mesh.flip=0.5
-
-func drawCards(data):
+func drawCard(data,empty_hand):
 	var id_player = data[0]
 	var num_card = data[1]
 	var mesh=cardNodes[num_card-1]
-	mesh._setEndPosition(global.pos[id_player]+Vector3(0,10,0))#mettre toujoours à droite du jeu
+	mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,empty_hand*5))
 	mesh.toBeMoved=1
-	mesh.flip=0.5
+	mesh.set_rotation(Vector3(0,0,1))
+
