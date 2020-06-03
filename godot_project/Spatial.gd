@@ -91,7 +91,6 @@ func handCard(data):
 			mesh.flip=0
 			mesh.set_rotation(Vector3(0,3.2,-1.5))
 		
-	
 func drawCard(data,empty_hand):
 	var id_player = data[0]
 	var num_card = data[1]
