@@ -13,6 +13,7 @@ func _ready():
 func popup_hide():
 	hide()
 	var control  = get_tree().get_root().get_node("ControlGame")
+	get_child(0).get_child(1).get_child(control.selected_card).draw()
 	print("-------------------")
 	print("action selected :"+str(control.bool_action))
 	print("card selected :"+str(control.selected_card))

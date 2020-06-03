@@ -14,7 +14,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func draw():
 	var root = get_tree().get_root().get_node("ControlGame")
 	#print("mycards[i] = "+str(root.my_cards[0] ))
 	if(root.my_cards[0] != null):
