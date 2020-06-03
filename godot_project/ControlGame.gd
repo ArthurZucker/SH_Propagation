@@ -85,14 +85,13 @@ func play():
 	get_node("Popup").popup()
 
 func _on_Carte1_pressed():
-	selected_card = 0
-	
+	selected_card = my_cards[0]
 	
 func _on_Carte2_pressed():
-	selected_card = 1
+	selected_card = my_cards[1]
 
 func _on_Carte3_pressed():
-	selected_card = 2
+	selected_card = my_cards[2]
 
 func _on_Hide_pressed():
 	bool_action = -1

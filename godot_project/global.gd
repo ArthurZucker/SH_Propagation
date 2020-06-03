@@ -15,15 +15,23 @@ var direction
 var pos = [Vector3(-15,0,-15),Vector3(15,0,-15),Vector3(-15,0,15),Vector3(15,0,15)] 
 var previous
 var current
-var cardNames2 = [	"res://carte01.jpg","res://carte02.jpg","res://carte03.jpg","res://carte04.jpg",
-				"res://carte05.jpg","res://carte06.jpg","res://carte07.jpg","res://carte08.jpg",
-				"res://carte09.jpg","res://carte10.jpg","res://carte11.jpg","res://carte12.jpg",
-				"res://carte13.jpg","res://carte14.jpg","res://carte15.jpg","res://carte16.jpg",
-				"res://carte17.jpg","res://carte18.jpg","res://carte19.jpg","res://carte20.jpg",
-				"res://carte21.jpg","res://carte22.jpg","res://carte23.jpg","res://carte24.jpg",
-				"res://carte25.jpg","res://carte26.jpg","res://carte27.jpg","res://carte28.jpg",
-				"res://carte29.jpg","res://carte30.jpg","res://carte31.jpg","res://carte32.jpg",
-				]
+var cardNames2 = [	"res://c1.jpg","res://c2.jpg","res://c3.jpg",
+					"res://c4.jpg","res://c5.jpg","res://c6.jpg",
+					"res://c7.jpg","res://c8.jpg","res://c9.jpg",
+					"res://c10.jpg","res://c11.jpg","res://c12.jpg",
+					"res://c13.jpg","res://c14.jpg","res://c15.jpg",
+					"res://c16.jpg","res://c17.jpg","res://c18.jpg",
+					"res://c19.jpg","res://c20.jpg","res://c21.jpg",
+					"res://c22.jpg","res://c23.jpg","res://c24.jpg",
+					"res://c25.jpg","res://c26.jpg","res://c27.jpg",
+					"res://c28.jpg","res://c29.jpg","res://c30.jpg",
+					"res://c31.jpg","res://c32.jpg"]
+
+
+
+
+
+
 func _ready():
 	direction=0
 	print("global _ready() called")
