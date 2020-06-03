@@ -84,8 +84,9 @@ func _on_ButtonMenu_pressed():
 func play():
 	get_node("Popup").popup()
 
+
 func _on_Carte1_pressed():
-	selected_card = my_cards[0]
+	selected_card = my_cards[1]
 	index = 0
 
 func _on_Carte2_pressed():
