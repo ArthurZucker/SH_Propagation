@@ -34,13 +34,13 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'M': 
 			if(int(arra[0])==id_joueur): play=true
-			#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+			send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+			#play()
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
 					my_cards[i]=int(arra[i+1])
 			get_node("Spatial").handCard(arra)
-			#play()
 		'H':
 			var id_player = arra[0]
 			var num_card = arra[1]

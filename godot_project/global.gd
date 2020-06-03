@@ -12,7 +12,7 @@ var controlEndGameNode
 var controlScoreNode
 var ipAddress
 var direction
-var pos = [Vector3(-15,0,-15),Vector3(15,0,-15),Vector3(-15,0,15),Vector3(15,0,15)] 
+var pos = [Vector3(-20,0,-20),Vector3(20,0,-20),Vector3(-20,0,20),Vector3(20,0,20)] 
 var previous
 var current
 var cardNames2 = [	"res://carte01.jpg","res://carte02.jpg","res://carte03.jpg","res://carte04.jpg",
