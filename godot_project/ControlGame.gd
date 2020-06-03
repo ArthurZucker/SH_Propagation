@@ -33,17 +33,17 @@ func _networkMessage(mess):
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			#if(int(arra[0])==id_joueur): play()
+			if(int(arra[0])==id_joueur): play()
 			#print(id_joueur)
-			if(int(arra[0])==id_joueur):
-				if(my_cards[0]!=null):
-					send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
-				elif(my_cards[1]!=null):
-					send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
-				elif(my_cards[2]!=null):
-					send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
-				else:
-					print("plus de carte")
+			#if(int(arra[0])==id_joueur):
+				#if(my_cards[0]!=null):
+					#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+				#elif(my_cards[1]!=null):
+				#	send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
+				#elif(my_cards[2]!=null):
+				#	send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
+				#else:
+				#	print("plus de carte")
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
@@ -95,7 +95,7 @@ func _on_ButtonMenu_pressed():
 	root.add_child(global.controlMenuNode)
 
 func play():
-	get_node("Popup").popup()
+	get_node("Popup").set_visible(true)
 
 
 func _on_Carte1_pressed():
@@ -112,8 +112,8 @@ func _on_Carte3_pressed():
 	
 func _on_Hide_pressed():
 	bool_action = -1
-	get_node("Popup").popup_hide()
+	get_node("Popup").set_visible(false)
 
 func _on_Reveal_pressed():
 	bool_action = 1
-	get_node("Popup").popup_hide()
+	get_node("Popup").set_visible(false)

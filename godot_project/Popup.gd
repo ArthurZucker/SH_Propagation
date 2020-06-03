@@ -1,4 +1,4 @@
-extends Popup
+extends Control
 
 
 # Declare member variables here. Examples:
@@ -8,16 +8,12 @@ extends Popup
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_visible(false)
 	hide() # Replace with function body.
 
 func popup_hide():
 	hide()
 	var control  = get_tree().get_root().get_node("ControlGame")
-	get_child(0).get_child(1).get_child(control.index).draw()
-	print("-------------------")
-	print("action selected :"+str(control.bool_action))
-	print("card selected :"+str(control.selected_card))
-	print("-------------------")
 	match control.bool_action:
 		-1: control.send_mess("H "+str(control.id_joueur)+" "+str(control.selected_card))
 		1 : control.send_mess("R "+str(control.id_joueur)+" "+str(control.selected_card))
