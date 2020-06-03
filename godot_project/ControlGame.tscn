@@ -59,21 +59,24 @@ margin_top = -97.0208
 margin_right = 2.09277
 margin_bottom = -23.0208
 script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup"]
-anchor_top = 1.0
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_top = -76.0
+margin_left = -174.5
+margin_right = 174.5
 size_flags_horizontal = 3
-size_flags_vertical = 3
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="Popup/VBoxContainer"]
-margin_right = 1024.0
+margin_right = 349.0
 margin_bottom = 28.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -82,9 +85,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="Popup/VBoxContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 1017.0
+margin_right = 342.0
 margin_bottom = 21.0
-text = "Vous pouvez choisir de chacher ou révéler une carte"
+text = "Vous pouvez choisir de cacher ou révéler une carte"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -92,23 +95,23 @@ __meta__ = {
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Popup/VBoxContainer"]
 margin_top = 32.0
-margin_right = 1024.0
+margin_right = 349.0
 margin_bottom = 56.0
 size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 
 [node name="Carte1" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 372.0
-margin_right = 445.0
+margin_left = 35.0
+margin_right = 108.0
 margin_bottom = 24.0
 group = SubResource( 2 )
 text = "Carte 1"
 align = 1
 
 [node name="Carte2" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 475.0
-margin_right = 548.0
+margin_left = 138.0
+margin_right = 211.0
 margin_bottom = 24.0
 size_flags_vertical = 3
 group = SubResource( 2 )
@@ -116,8 +119,8 @@ text = "Carte 2"
 align = 1
 
 [node name="Carte3" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 578.0
-margin_right = 651.0
+margin_left = 241.0
+margin_right = 314.0
 margin_bottom = 24.0
 size_flags_vertical = 3
 group = SubResource( 2 )
@@ -126,22 +129,22 @@ align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer"]
 margin_top = 60.0
-margin_right = 1024.0
+margin_right = 349.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 custom_constants/separation = 100
 alignment = 1
 
 [node name="Hide" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
-margin_left = 414.0
-margin_right = 456.0
+margin_left = 76.0
+margin_right = 118.0
 margin_bottom = 20.0
 group = SubResource( 3 )
 text = "Hide"
 
 [node name="Reveal" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
-margin_left = 556.0
-margin_right = 610.0
+margin_left = 218.0
+margin_right = 272.0
 margin_bottom = 20.0
 group = SubResource( 3 )
 text = "Reveal"

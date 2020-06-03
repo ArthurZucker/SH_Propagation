@@ -110,3 +110,5 @@ func _on_Button_pressed():
 	for i in range(10):
 		reponse+= str(answers[i])+" "
 	control.send_mess("Q "+str(control.id_joueur)+" " + reponse)
+	
+	

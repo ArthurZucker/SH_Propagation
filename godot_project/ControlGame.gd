@@ -9,7 +9,7 @@ var empty_hand
 var selected_card
 var bool_action
 var index
-
+var scores = [null,null,null,null]
 func _ready():
 	pass # Replace with function body.
 
@@ -81,6 +81,7 @@ func _networkMessage(mess):
 			root.remove_child(myself)
 			root.add_child(global.controlEndGameNode)
 		'S':
+			scores = arra
 			var root=get_tree().get_root()
 			var myself=root.get_child(1)
 			print (root,myself)
