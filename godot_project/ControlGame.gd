@@ -29,37 +29,51 @@ func _networkMessage(mess):
 	print(mess.right(2).split_floats(' '))
 	var arra = mess.right(2).split_floats(' ')
 	match mess[0]:
-		'I': id_joueur= int(arra[0])
+		'I': id_joueur = int(arra[0])
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			if(int(arra[0])==id_joueur): play()
-			#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+			#if(int(arra[0])==id_joueur): play()
+			#print(id_joueur)
+			if(int(arra[0])==id_joueur):
+				if(my_cards[0]!=null):
+					send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+				elif(my_cards[1]!=null):
+					send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
+				elif(my_cards[2]!=null):
+					send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
+				else:
+					print("plus de carte")
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
 					my_cards[i]=int(arra[i+1])
 			get_node("Spatial").handCard(arra)
 		'H':
-			var id_player = arra[0]
+			#var id_player = arra[0]
 			var num_card = arra[1]
 			cpt_card_hide=cpt_card_hide+1
-			get_node("Spatial").hideCard(id_player,num_card)
+			get_node("Spatial").hideCard(num_card)
 			for i in range(3):
 				if(my_cards[i]==num_card):
 					empty_hand=i
 		'R':
-			var id_player = arra[0]
+			#var id_player = arra[0]
 			var num_card = arra[1]
 			cpt_card_reveal=cpt_card_reveal+1
-			get_node("Spatial").revealCard(id_player,num_card)
+			get_node("Spatial").revealCard(num_card)
 			for i in range(3):
 				if(my_cards[i]==num_card):
 					empty_hand=i
 		'P':
-			if(int(arra[0])==id_joueur):
+			var id_player = arra[0]
+			if(id_player==id_joueur):
 				my_cards[empty_hand]=int(arra[1])
 			get_node("Spatial").drawCard(arra,empty_hand)
+		'E': 
+			var id_player = arra[0]
+			if(id_player==id_joueur):
+				my_cards[empty_hand]=null
 		'Q':
 			var root=get_tree().get_root()
 			var myself=root.get_child(1)

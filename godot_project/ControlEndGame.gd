@@ -105,7 +105,7 @@ func _on_CheckBox37_pressed():
 
 
 func _on_Button_pressed():
-	var control  = get_tree().get_root().get_node("ControlGame")
+	var control  = global.controlGameNode
 	var reponse = ""
 	for i in range(10):
 		reponse+= str(answers[i])+" "
