@@ -99,11 +99,11 @@ margin_right = 784.0
 margin_bottom = 496.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/separation = 10
+custom_constants/separation = 30
 alignment = 1
 
 [node name="Carte1" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_right = 254.0
+margin_right = 241.0
 margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -112,36 +112,42 @@ script = ExtResource( 7 )
 [node name="TextureRect" type="TextureRect" parent="Popup/VBoxContainer/HBoxContainer2/Carte1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Carte2" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 264.0
-margin_right = 518.0
+margin_left = 271.0
+margin_right = 512.0
 margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 
-[node name="TextureRect2" type="TextureRect" parent="Popup/VBoxContainer/HBoxContainer2/Carte2"]
+[node name="TextureRect" type="TextureRect" parent="Popup/VBoxContainer/HBoxContainer2/Carte2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Carte3" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 528.0
+margin_left = 542.0
 margin_right = 784.0
 margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
 
-[node name="TextureRect3" type="TextureRect" parent="Popup/VBoxContainer/HBoxContainer2/Carte3"]
+[node name="TextureRect" type="TextureRect" parent="Popup/VBoxContainer/HBoxContainer2/Carte3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+expand = true
+stretch_mode = 6
 __meta__ = {
 "_edit_use_anchors_": false
 }
