@@ -14,6 +14,8 @@ func _ready():
 		set_expand(true)
 		set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
 		set_normal_texture(tex)
+		print("texture is : ")
+		print(get_normal_texture())
 		texture_normal = tex
 		
 		
@@ -34,5 +36,7 @@ func draw():
 		set_expand(true)
 		set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
 		set_normal_texture(tex)
+		print("texture is : ")
+		print(get_normal_texture())
 		texture_normal = tex
 		
