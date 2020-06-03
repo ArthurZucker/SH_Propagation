@@ -40,7 +40,7 @@ func _networkMessage(mess):
 				for i in range(3):
 					my_cards[i]=int(arra[i+1])
 			get_node("Spatial").handCard(arra)
-			play()
+			#play()
 		'H':
 			var id_player = arra[0]
 			var num_card = arra[1]
