@@ -57,10 +57,6 @@ func createBig(x,y,z,rv,cname):
 	# create a new image texture that will be used as a tile texture
 	var texture=ImageTexture.new()
 	texture.load(cname)
-	#var image = Image.new()
-	#var err = image.load(cname)
-	#texture.create_from_image(image, 0)
-	
 	# and perform the assignment to the surface_material
 	surface_material.albedo_texture=texture
 	# add the newly created instance as a child of the Origine3D Node
