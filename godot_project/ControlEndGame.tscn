@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ControlEndGame.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 9
+
+[sub_resource type="ButtonGroup" id=2]
+
+[sub_resource type="ButtonGroup" id=3]
+
+[sub_resource type="ButtonGroup" id=4]
+
+[sub_resource type="ButtonGroup" id=5]
+
+[sub_resource type="ButtonGroup" id=6]
+
+[sub_resource type="ButtonGroup" id=7]
+
+[sub_resource type="ButtonGroup" id=8]
+
+[sub_resource type="ButtonGroup" id=9]
+
+[sub_resource type="ButtonGroup" id=10]
+
+[sub_resource type="ButtonGroup" id=11]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -9,3 +41,485 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/bg = SubResource( 1 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 1022.0
+margin_bottom = 598.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 20
+custom_constants/hseparation = 20
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_right = 326.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 2 )
+text = "Réponse A"
+
+[node name="CheckBox2" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 2 )
+text = "Réponse B"
+
+[node name="CheckBox3" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 2 )
+text = "Réponse C"
+
+[node name="CheckBox4" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 2 )
+text = "Réponse D"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_right = 672.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer2"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 2: Quelle est le moment"
+
+[node name="CheckBox8" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer2"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 3 )
+text = "Réponse A"
+
+[node name="CheckBox7" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer2"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 3 )
+text = "Réponse B"
+
+[node name="CheckBox6" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer2"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 3 )
+text = "Réponse C"
+
+[node name="CheckBox5" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer2"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 3 )
+text = "Réponse D"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 692.0
+margin_right = 1018.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer3"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox12" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer3"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 4 )
+text = "Réponse A"
+
+[node name="CheckBox11" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer3"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 4 )
+text = "Réponse B"
+
+[node name="CheckBox10" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer3"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 4 )
+text = "Réponse C"
+
+[node name="CheckBox9" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer3"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 4 )
+text = "Réponse D"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_top = 148.0
+margin_right = 326.0
+margin_bottom = 276.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer4"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox16" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer4"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 5 )
+text = "Réponse A"
+
+[node name="CheckBox15" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer4"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 5 )
+text = "Réponse B"
+
+[node name="CheckBox14" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer4"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 5 )
+text = "Réponse C"
+
+[node name="CheckBox13" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer4"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 5 )
+text = "Réponse D"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 148.0
+margin_right = 672.0
+margin_bottom = 276.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer5"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox20" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer5"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 6 )
+text = "Réponse A"
+
+[node name="CheckBox19" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer5"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 6 )
+text = "Réponse B"
+
+[node name="CheckBox18" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer5"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 6 )
+text = "Réponse C"
+
+[node name="CheckBox17" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer5"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 6 )
+text = "Réponse D"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 692.0
+margin_top = 148.0
+margin_right = 1018.0
+margin_bottom = 276.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer6"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox24" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer6"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 7 )
+text = "Réponse A"
+
+[node name="CheckBox23" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer6"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 7 )
+text = "Réponse B"
+
+[node name="CheckBox22" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer6"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 7 )
+text = "Réponse C"
+
+[node name="CheckBox21" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer6"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 7 )
+text = "Réponse D"
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_top = 296.0
+margin_right = 326.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer7"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox28" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer7"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 8 )
+text = "Réponse A"
+
+[node name="CheckBox27" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer7"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 8 )
+text = "Réponse B"
+
+[node name="CheckBox26" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer7"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 8 )
+text = "Réponse C"
+
+[node name="CheckBox25" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer7"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 8 )
+text = "Réponse D"
+
+[node name="VBoxContainer8" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 296.0
+margin_right = 672.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer8"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox32" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer8"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 9 )
+text = "Réponse A"
+
+[node name="CheckBox31" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer8"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 9 )
+text = "Réponse B"
+
+[node name="CheckBox30" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer8"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 9 )
+text = "Réponse C"
+
+[node name="CheckBox29" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer8"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 9 )
+text = "Réponse D"
+
+[node name="VBoxContainer9" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 692.0
+margin_top = 296.0
+margin_right = 1018.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer9"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox36" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer9"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 10 )
+text = "Réponse A"
+
+[node name="CheckBox35" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer9"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 10 )
+text = "Réponse B"
+
+[node name="CheckBox34" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer9"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 10 )
+text = "Réponse C"
+
+[node name="CheckBox33" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer9"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 10 )
+text = "Réponse D"
+
+[node name="VBoxContainer11" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_top = 444.0
+margin_right = 326.0
+margin_bottom = 594.0
+
+[node name="VBoxContainer10" type="VBoxContainer" parent="ScrollContainer/GridContainer"]
+margin_left = 346.0
+margin_top = 444.0
+margin_right = 672.0
+margin_bottom = 594.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_right = 326.0
+margin_bottom = 14.0
+text = "Question 1: Quelle est le moment"
+
+[node name="CheckBox40" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_top = 18.0
+margin_right = 326.0
+margin_bottom = 42.0
+group = SubResource( 11 )
+text = "Réponse A"
+
+[node name="CheckBox39" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_top = 46.0
+margin_right = 326.0
+margin_bottom = 70.0
+group = SubResource( 11 )
+text = "Réponse B"
+
+[node name="CheckBox38" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_top = 74.0
+margin_right = 326.0
+margin_bottom = 98.0
+group = SubResource( 11 )
+text = "Réponse C"
+
+[node name="CheckBox37" type="CheckBox" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_top = 102.0
+margin_right = 326.0
+margin_bottom = 126.0
+group = SubResource( 11 )
+text = "Réponse D"
+
+[node name="Button" type="Button" parent="ScrollContainer/GridContainer/VBoxContainer10"]
+margin_top = 130.0
+margin_right = 326.0
+margin_bottom = 150.0
+text = "Soumettre"
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer/CheckBox" to="." method="_on_CheckBox_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer/CheckBox2" to="." method="_on_CheckBox2_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer/CheckBox3" to="." method="_on_CheckBox3_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer/CheckBox4" to="." method="_on_CheckBox4_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer2/CheckBox8" to="." method="_on_CheckBox8_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer2/CheckBox7" to="." method="_on_CheckBox7_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer2/CheckBox6" to="." method="_on_CheckBox6_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer2/CheckBox5" to="." method="_on_CheckBox5_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer3/CheckBox12" to="." method="_on_CheckBox12_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer3/CheckBox11" to="." method="_on_CheckBox11_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer3/CheckBox10" to="." method="_on_CheckBox10_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer3/CheckBox9" to="." method="_on_CheckBox9_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer4/CheckBox16" to="." method="_on_CheckBox16_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer4/CheckBox15" to="." method="_on_CheckBox15_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer4/CheckBox14" to="." method="_on_CheckBox14_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer4/CheckBox13" to="." method="_on_CheckBox13_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer5/CheckBox20" to="." method="_on_CheckBox20_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer5/CheckBox19" to="." method="_on_CheckBox19_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer5/CheckBox18" to="." method="_on_CheckBox18_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer5/CheckBox17" to="." method="_on_CheckBox17_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer6/CheckBox24" to="." method="_on_CheckBox24_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer6/CheckBox23" to="." method="_on_CheckBox23_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer6/CheckBox22" to="." method="_on_CheckBox22_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer6/CheckBox21" to="." method="_on_CheckBox21_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer7/CheckBox28" to="." method="_on_CheckBox28_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer7/CheckBox27" to="." method="_on_CheckBox27_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer7/CheckBox26" to="." method="_on_CheckBox26_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer7/CheckBox25" to="." method="_on_CheckBox25_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer8/CheckBox32" to="." method="_on_CheckBox32_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer8/CheckBox31" to="." method="_on_CheckBox31_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer8/CheckBox30" to="." method="_on_CheckBox30_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer8/CheckBox29" to="." method="_on_CheckBox29_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer9/CheckBox36" to="." method="_on_CheckBox36_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer9/CheckBox35" to="." method="_on_CheckBox35_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer9/CheckBox34" to="." method="_on_CheckBox34_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer9/CheckBox33" to="." method="_on_CheckBox33_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer10/CheckBox40" to="." method="_on_CheckBox40_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer10/CheckBox39" to="." method="_on_CheckBox39_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer10/CheckBox38" to="." method="_on_CheckBox38_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer10/CheckBox37" to="." method="_on_CheckBox37_pressed"]
+[connection signal="pressed" from="ScrollContainer/GridContainer/VBoxContainer10/Button" to="." method="_on_Button_pressed"]
