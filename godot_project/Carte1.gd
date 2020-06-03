@@ -8,6 +8,8 @@ func _ready():
 	if(root.my_cards[0] != null):
 		var tex=ImageTexture.new()
 		tex.load(global.cardNames2[root.my_cards[0]-1])
+		print("texture is : ")
+		print(get_normal_texture())
 		print("______________________________")
 		print("setting texture : "+str(global.cardNames2[root.my_cards[0]-1]))
 		print("______________________________")
@@ -17,8 +19,7 @@ func _ready():
 		print("texture is : ")
 		print(get_normal_texture())
 		texture_normal = tex
-		
-		
+	show()
 		
 
 
