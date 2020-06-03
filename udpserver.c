@@ -235,9 +235,9 @@ int main()
 	{
 		n = recvfrom(sockfd, (char *)buffer, MAXLINE,MSG_WAITALL, ( struct sockaddr *) &cliaddr,&len);
 		buffer[n] = '\0';
+		printf("receive : %s\n",buffer );
 		if (fsmServer==0)
 		{
-			printf("receive : %s\n",buffer );
 			switch (buffer[0])
 			{
 				case 'C':

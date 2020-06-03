@@ -10,7 +10,8 @@ func _ready():
 		texture.load(global.cardNames2[root.my_cards[0]-1])
 		print("setting texture : "+str(global.cardNames2[root.my_cards[0]-1]))
 		texture.set_size_override(Vector2(20, 20))
-		set_normal_texture(texture)
+		get_node("TextureRect").expand = true
+		get_node("TextureRect").texture = texture
 		
 
 
@@ -24,4 +25,5 @@ func draw():
 		texture.load(global.cardNames2[root.my_cards[0]-1])
 		print("setting tewture : "+str(global.cardNames2[root.my_cards[0]-1]))
 		texture.set_size_override(Vector2(20, 20))
-		set_normal_texture(texture)
+		get_node("TextureRect").expand = true
+		get_node("TextureRect").texture = texture

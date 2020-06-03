@@ -6,7 +6,8 @@ func _ready():
 		var texture=ImageTexture.new()
 		texture.load(global.cardNames2[root.my_cards[2]-1])
 		texture.set_size_override(Vector2(20, 20))
-		set_normal_texture(texture)
+		get_node("TextureRect").expand = true
+		get_node("TextureRect").texture = texture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,4 +18,5 @@ func draw():
 		texture.load(global.cardNames2[root.my_cards[2]-1])
 		print("setting tewture : "+str(global.cardNames2[root.my_cards[2]-1]))
 		texture.set_size_override(Vector2(20, 20))
-		set_normal_texture(texture)
+		get_node("TextureRect").expand = true
+		get_node("TextureRect").texture = texture
