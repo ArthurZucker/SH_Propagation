@@ -6,19 +6,17 @@ func _ready():
 	var root = get_tree().get_root().get_node("ControlGame")
 	print("mycards[i] = "+str(root.my_cards[0] ))
 	if(root.my_cards[0] != null):
-		var tex=ImageTexture.new()
-		tex.load(global.cardNames2[root.my_cards[0]-1])
-		print("texture is : ")
-		print(get_normal_texture())
-		print("______________________________")
-		print("setting texture : "+str(global.cardNames2[root.my_cards[0]-1]))
-		print("______________________________")
-		set_expand(true)
-		set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
-		set_normal_texture(tex)
-		print("texture is : ")
-		print(get_normal_texture())
-		texture_normal = tex
+		var cname = global.cardNames2[root.my_cards[0]-1]
+		var img = Image.new()
+		var itex = ImageTexture.new()
+		img.load(cname)
+		itex.create_from_image(img)
+		#var tex=ImageTexture.new()
+		#tex.load(cname)
+		#set_expand(true)
+		#set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
+		set_normal_texture(itex)
+		texture_normal = itex
 	show()
 		
 
@@ -28,16 +26,15 @@ func draw():
 	var root = get_tree().get_root().get_node("ControlGame")
 	#print("mycards[i] = "+str(root.my_cards[0] ))
 	if(root.my_cards[0] != null):
-		print("my card not null redrawing texture card 0")
-		var tex=ImageTexture.new()
-		tex.load(global.cardNames2[root.my_cards[0]-1])
-		print("______________________________")
-		print("setting tewture : "+str(global.cardNames2[root.my_cards[0]-1]))
-		print("______________________________")
-		set_expand(true)
-		set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
-		set_normal_texture(tex)
-		print("texture is : ")
-		print(get_normal_texture())
-		texture_normal = tex
+		var cname = global.cardNames2[root.my_cards[0]-1]
+		var img = Image.new()
+		var itex = ImageTexture.new()
+		img.load(cname)
+		itex.create_from_image(img)
+		#var tex=ImageTexture.new()
+		#tex.load(cname)
+		#set_expand(true)
+		#set_stretch_mode(STRETCH_KEEP_ASPECT_CENTERED)
+		set_normal_texture(itex)
+		texture_normal = itex
 		
