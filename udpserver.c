@@ -254,11 +254,11 @@ int main()
 					printClients();
 
 					// rechercher l'id du joueur qui vient de se connecter
-					id=findClientByName(clientName);
+					// id=findClientByName(clientName);
+					id = nbClients-1;
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id
-
 					sprintf(reply,"I %d",id);
 					sendMessageToGodotClient(udpClients[id].ipAddress,udpClients[id].port,reply);
 
@@ -312,6 +312,10 @@ int main()
 								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
 								broadcastMessage(reply);
 							}
+							else{
+								sprintf(reply,"E %d",id_joueur);
+								broadcastMessage(reply);
+							}
 
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
@@ -330,6 +334,10 @@ int main()
 							//on lui donne une carte
 							if(head->suivant!=NULL){
 								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
+								broadcastMessage(reply);
+							}
+							else{
+								sprintf(reply,"E %d",id_joueur);
 								broadcastMessage(reply);
 							}
 
