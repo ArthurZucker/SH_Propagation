@@ -19,6 +19,7 @@ Projet de jeu en GODOT
 - [ ] Faire le script godot du client
 - [ ] Mettre la bande sonore d'introduction
 - [ ] Ajouter ou pas des objets blenders pour les personnages (APRÈS)
+- [ ] Bloquer la caméra
 
 Graphique : Carte et plateau
 Code : Action : Carte face visible / face caché
