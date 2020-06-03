@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ControlMenu.gd" type="Script" id=1]
+[ext_resource path="res://font/Frankie.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://SH.png" type="Texture" id=3]
 
-[node name="ControlMenu" type="Control"]
+[sub_resource type="DynamicFont" id=1]
+size = 200
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 200
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 200
+font_data = ExtResource( 2 )
+
+[node name="Panel" type="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.266603, 0.27764 )
+texture = ExtResource( 3 )
+
+[node name="ControlMenu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
@@ -10,28 +30,47 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonJouer" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 20.0
+[node name="VBoxContainer" type="VBoxContainer" parent="ControlMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -570.0
+margin_top = -1080.0
+margin_right = 570.0
+margin_bottom = 1080.0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonJouer" type="Button" parent="ControlMenu/VBoxContainer"]
+margin_top = 624.0
+margin_right = 1140.0
+margin_bottom = 861.0
+custom_fonts/font = SubResource( 1 )
 text = "Jouer"
 
-[node name="ButtonOptions" type="Button" parent="."]
-margin_top = 40.0
-margin_right = 12.0
-margin_bottom = 60.0
+[node name="ButtonOptions" type="Button" parent="ControlMenu/VBoxContainer"]
+margin_top = 961.0
+margin_right = 1140.0
+margin_bottom = 1198.0
+custom_fonts/font = SubResource( 2 )
 text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ButtonTestReseau" type="Button" parent="."]
-margin_top = 80.0
-margin_right = 86.0
-margin_bottom = 100.0
+[node name="ButtonTestReseau" type="Button" parent="ControlMenu/VBoxContainer"]
+margin_top = 1298.0
+margin_right = 1140.0
+margin_bottom = 1535.0
+custom_fonts/font = SubResource( 3 )
 text = "Test réseau"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="ButtonJouer" to="." method="_on_ButtonJouer_pressed"]
-[connection signal="pressed" from="ButtonOptions" to="." method="_on_ButtonOptions_pressed"]
-[connection signal="pressed" from="ButtonTestReseau" to="." method="_on_ButtonTestReseau_pressed"]
+[connection signal="pressed" from="ControlMenu/VBoxContainer/ButtonJouer" to="ControlMenu" method="_on_ButtonJouer_pressed"]
+[connection signal="pressed" from="ControlMenu/VBoxContainer/ButtonOptions" to="ControlMenu" method="_on_ButtonOptions_pressed"]
+[connection signal="pressed" from="ControlMenu/VBoxContainer/ButtonTestReseau" to="ControlMenu" method="_on_ButtonTestReseau_pressed"]

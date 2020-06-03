@@ -8,7 +8,8 @@ var cpt_card_reveal=[0,0,0,0]
 var cpt_card_hide=[0,0,0,0]
 var empty_hand
 var test = 0 
-
+var selected_card
+var bool_action
 func _ready():
 	pass # Replace with function body.
 
@@ -17,8 +18,10 @@ func _ready():
 #	pass
 
 func send_mess(mess):
-	global.controlMenuNode.socket.set_dest_address("127.0.0.1", 4242)
-	global.controlMenuNode.socket.put_packet(mess.to_ascii())
+	var control = global.controlMenuNode.get_child(0)
+	print("supposed to send : "+mess)
+	control.socket.set_dest_address("127.0.0.1", 4242)
+	control.socket.put_packet(mess.to_ascii())
 
 func _networkMessage(mess):
 	#Message reçu dans control Menu! No worries about anything
@@ -31,12 +34,13 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'M': 
 			if(int(arra[0])==id_joueur): play=true
-			send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+			#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
 					my_cards[i]=int(arra[i+1])
 			get_node("Spatial").handCard(arra)
+			play()
 		'H':
 			var id_player = arra[0]
 			var num_card = arra[1]
@@ -77,4 +81,22 @@ func _on_ButtonMenu_pressed():
 	root.remove_child(myself)
 	root.add_child(global.controlMenuNode)
 	
+func play():
+	get_node("Popup").popup()
 
+func _on_Carte1_pressed():
+	selected_card = 0
+	
+func _on_Carte2_pressed():
+	selected_card = 1
+
+func _on_Carte3_pressed():
+	selected_card = 2
+
+func _on_Hide_pressed():
+	bool_action = -1
+	get_node("Popup").popup_hide()
+
+func _on_Reveal_pressed():
+	bool_action = 1
+	get_node("Popup").popup_hide()
