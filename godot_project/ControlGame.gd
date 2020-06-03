@@ -4,8 +4,8 @@ var id_joueur
 var play
 var my_cards=[null,null,null]
 var liste_joueur=[null,null,null,null]
-var cpt_card_reveal=[0,0,0,0]
-var cpt_card_hide=[0,0,0,0]
+var cpt_card_reveal=0
+var cpt_card_hide=0
 var empty_hand
 var selected_card
 var bool_action
@@ -34,8 +34,8 @@ func _networkMessage(mess):
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			if(int(arra[0])==id_joueur): play()
-			#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+			#if(int(arra[0])==id_joueur): play()
+			send_mess("H "+str(id_joueur)+" "+str(my_cards[0]))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
@@ -44,7 +44,7 @@ func _networkMessage(mess):
 		'H':
 			var id_player = arra[0]
 			var num_card = arra[1]
-			cpt_card_hide[id_player]=cpt_card_hide[id_player]+1
+			cpt_card_hide=cpt_card_hide+1
 			get_node("Spatial").hideCard(id_player,num_card)
 			for i in range(3):
 				if(my_cards[i]==num_card):
@@ -52,7 +52,7 @@ func _networkMessage(mess):
 		'R':
 			var id_player = arra[0]
 			var num_card = arra[1]
-			cpt_card_reveal[id_player]= cpt_card_reveal[id_player]+1
+			cpt_card_reveal=cpt_card_reveal+1
 			get_node("Spatial").revealCard(id_player,num_card)
 			for i in range(3):
 				if(my_cards[i]==num_card):
