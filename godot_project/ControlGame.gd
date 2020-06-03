@@ -87,6 +87,7 @@ func play():
 func _on_Carte1_pressed():
 	selected_card = 0
 	
+	
 func _on_Carte2_pressed():
 	selected_card = 1
 
