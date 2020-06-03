@@ -46,20 +46,28 @@ __meta__ = {
 
 [node name="Popup" type="Popup" parent="."]
 visible = true
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Popup"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 120.0
-margin_top = 40.0
-margin_right = -120.0
-margin_bottom = -40.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -392.0
+margin_top = -260.0
+margin_right = 392.0
+margin_bottom = 260.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -67,9 +75,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Popup/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Popup/VBoxContainer"]
 margin_right = 784.0
-margin_bottom = 14.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Popup/VBoxContainer/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 777.0
+margin_bottom = 21.0
 text = "Vous pouvez choisir de chacher ou révéler une carte"
 align = 1
 __meta__ = {
@@ -77,54 +94,55 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Popup/VBoxContainer"]
-margin_top = 18.0
+margin_top = 32.0
 margin_right = 784.0
-margin_bottom = 494.0
+margin_bottom = 496.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_constants/separation = 10
 alignment = 1
 
 [node name="Carte1" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_right = 258.0
-margin_bottom = 476.0
+margin_right = 254.0
+margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 7 )
 
 [node name="Carte2" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 262.0
-margin_right = 520.0
-margin_bottom = 476.0
+margin_left = 264.0
+margin_right = 518.0
+margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 5 )
 
 [node name="Carte3" type="TextureButton" parent="Popup/VBoxContainer/HBoxContainer2"]
-margin_left = 524.0
+margin_left = 528.0
 margin_right = 784.0
-margin_bottom = 476.0
+margin_bottom = 464.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer"]
-margin_top = 498.0
+margin_top = 500.0
 margin_right = 784.0
 margin_bottom = 520.0
 size_flags_horizontal = 3
 custom_constants/separation = 100
 alignment = 1
 
-[node name="Hide" type="ToolButton" parent="Popup/VBoxContainer/HBoxContainer"]
+[node name="Hide" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
 margin_left = 294.0
 margin_right = 336.0
-margin_bottom = 22.0
+margin_bottom = 20.0
 text = "Hide"
 
-[node name="Reveal" type="ToolButton" parent="Popup/VBoxContainer/HBoxContainer"]
+[node name="Reveal" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
 margin_left = 436.0
 margin_right = 490.0
-margin_bottom = 22.0
+margin_bottom = 20.0
 text = "Reveal"
 [connection signal="pressed" from="ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Carte1" to="." method="_on_Carte1_pressed"]
