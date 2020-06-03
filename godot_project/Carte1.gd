@@ -9,10 +9,8 @@ func _ready():
 		var texture=ImageTexture.new()
 		texture.load(global.cardNames2[root.my_cards[0]-1])
 		print("setting texture : "+str(global.cardNames2[root.my_cards[0]-1]))
-		texture.set_size_override(Vector2(20, 20))
-		get_node("TextureRect").set_expand(true)
-		get_node("TextureRect").set_stretch_mode(1)
-		get_node("TextureRect").set_texture(texture)
+		set_normal_texture(texture)
+		
 		
 
 
@@ -25,7 +23,4 @@ func draw():
 		var texture=ImageTexture.new()
 		texture.load(global.cardNames2[root.my_cards[0]-1])
 		print("setting tewture : "+str(global.cardNames2[root.my_cards[0]-1]))
-		texture.set_size_override(Vector2(20, 20))
-		get_node("TextureRect").set_expand(true)
-		get_node("TextureRect").set_stretch_mode(1)
-		get_node("TextureRect").set_texture(texture)
+		set_normal_texture(texture)
