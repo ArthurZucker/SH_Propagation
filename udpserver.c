@@ -308,8 +308,10 @@ int main()
 							sprintf(reply,"R %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
-							broadcastMessage(reply);
+							if(head->suivant!=NULL){
+								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
+								broadcastMessage(reply);
+							}
 
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
@@ -326,8 +328,10 @@ int main()
 							sprintf(reply,"H %d %d",id_joueur,num_card);
 							broadcastMessage(reply);
 							//on lui donne une carte
-							sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
-							broadcastMessage(reply);
+							if(head->suivant!=NULL){
+								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
+								broadcastMessage(reply);
+							}
 
 							joueurCourant++;
 			        joueurCourant=joueurCourant%4;
