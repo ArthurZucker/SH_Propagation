@@ -254,8 +254,8 @@ int main()
 					printClients();
 
 					// rechercher l'id du joueur qui vient de se connecter
-					id=findClientByName(clientName);
-					//id = nbClients-1;
+					//id=findClientByName(clientName);
+					id = nbClients-1;
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id

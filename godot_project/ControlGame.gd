@@ -114,7 +114,9 @@ func _on_Carte3_pressed():
 func _on_Hide_pressed():
 	bool_action = -1
 	get_node("Popup").set_visible(false)
+	get_node("Popup").popup_hide()
 
 func _on_Reveal_pressed():
 	bool_action = 1
 	get_node("Popup").set_visible(false)
+	get_node("Popup").popup_hide()
