@@ -6,7 +6,7 @@ func _ready():
 	if(root.my_cards[1] != null):
 		var texture=ImageTexture.new()
 		texture.load(global.cardNames2[root.my_cards[1]-1])
-		#texture.set_scale(Vector2((0.5), (0.5)))
+		texture.set_size_override(Vector2(20, 20))
 		set_normal_texture(texture)
 
 
@@ -17,5 +17,5 @@ func draw():
 		var texture=ImageTexture.new()
 		texture.load(global.cardNames2[root.my_cards[1]-1])
 		print("setting tewture : "+str(global.cardNames2[root.my_cards[1]-1]))
-		#texture.set_scale(Vector2((0.5), (0.5)))
+		texture.set_size_override(Vector2(20, 20))
 		set_normal_texture(texture)
