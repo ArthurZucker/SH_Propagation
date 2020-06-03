@@ -70,7 +70,7 @@ func createBig(x,y,z,rv,cname):
 func revealCard(id_player,num_card):
 	var mesh=cardNodes[num_card-1]
 	mesh.set_rotation(Vector3(0,0,0))
-	mesh._setEndPosition(global.pos_reveal_card+Vector3(0,0,global.controlGameNode.cpt_card_reveal*5))
+	mesh._setEndPosition(global.pos_reveal_card+Vector3(0,0,global.controlGameNode.cpt_card_reveal*0.3))
 	mesh.toBeMoved=1
 	mesh.flip=0
 
@@ -92,8 +92,8 @@ func handCard(data):
 			mesh.flip=1
 			mesh.set_rotation(Vector3(0,0,1.5))
 		else:
-			mesh.flip=1
-			mesh.set_rotation(Vector3(0,0,-1.5))
+			mesh.flip=0
+			mesh.set_rotation(Vector3(0,3.2,-1.5))
 		
 	
 func drawCard(data,empty_hand):
@@ -106,6 +106,6 @@ func drawCard(data,empty_hand):
 		mesh.flip=1
 		mesh.set_rotation(Vector3(0,0,1.5))
 	else:
-		mesh.flip=1
-		mesh.set_rotation(Vector3(0,0,-1.5))
+		mesh.flip=0
+		mesh.set_rotation(Vector3(0,3.2,-1.5))
 

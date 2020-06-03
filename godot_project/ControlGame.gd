@@ -1,7 +1,6 @@
 extends Control
 
 var id_joueur
-var play
 var my_cards=[null,null,null]
 var liste_joueur=[null,null,null,null]
 var cpt_card_reveal=0
@@ -34,8 +33,8 @@ func _networkMessage(mess):
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			#if(int(arra[0])==id_joueur): play()
-			send_mess("H "+str(id_joueur)+" "+str(my_cards[0]))
+			if(int(arra[0])==id_joueur): play()
+			#send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
@@ -86,7 +85,7 @@ func play():
 
 
 func _on_Carte1_pressed():
-	selected_card = my_cards[1]
+	selected_card = my_cards[0]
 	index = 0
 
 func _on_Carte2_pressed():
