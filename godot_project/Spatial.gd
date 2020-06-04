@@ -33,8 +33,7 @@ func _ready():
 	
 	for i in range(len(cardNames)):
 		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,0,(randf() * (0.2)) -0.1,cardNames[i])
-			
-	
+
 
 func createBig(x,y,z,rv,cname):
 	# Create a new card instance
@@ -54,16 +53,7 @@ func createBig(x,y,z,rv,cname):
 	var surface_material=SpatialMaterial.new()
 	# and assign the material to the mesh instance
 	mi.set_surface_material(0,surface_material)
-	# create a new image texture that will be used as a tile texture
 	surface_material.albedo_texture=load(cname)
-	#var ressource = Image.new()
-	#ressource.load(cname)
-	#var texture=ImageTexture.new()
-	#texture.create_from_image(ressource)
-	#texture.load(cname)
-	# and perform the assignment to the surface_material
-	#surface_material.albedo_texture=texture
-	# add the newly created instance as a child of the Origine3D Node
 	spatialNode.add_child(mi)
 	return mi
 

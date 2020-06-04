@@ -167,8 +167,7 @@ void sendMessageToGodotClient(char *hostname,int portno, char *mess)
 	/* send the message to the server */
 	serverlen = sizeof(serverGodotAddr);
 	//n = sendto(socketGodot, sendBuffer, strlen(sendBuffer), 0,
-	n = sendto(socketGodot, mess, strlen(mess), 0,
-	(struct sockaddr *)&serverGodotAddr, serverlen);
+	n = sendto(socketGodot, mess, strlen(mess), 0,(struct sockaddr *)&serverGodotAddr, serverlen);
 	if (n < 0)
 	{
 		printf("ERROR in sendto\n");

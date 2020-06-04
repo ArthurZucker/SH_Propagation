@@ -14,11 +14,11 @@ func _ready():
 	global.controlEndGameNode=load("res://ControlEndGame.tscn").instance()
 	global.controlScoreNode=load("res://ControlScore.tscn").instance()
 	print("IP:", IP.get_local_addresses())
-	global.ipAddress=str(IP.get_local_addresses()[2])
+	global.ipAddress=str(IP.get_local_addresses()[4])
 	match global.ipAddress:
 		"127.0.0.1":
-			global.direction=0
-	
+			global.direction=4
+	global.direction=2
 	print ("controlMenuNode=",global.controlMenuNode)
 	print ("controlGameNode=",global.controlGameNode)
 	print ("controlOptionsNode=",global.controlOptionsNode)
