@@ -71,7 +71,7 @@ func _networkMessage(mess):
 			if(id_player==id_joueur):
 				my_cards[empty_hand]=int(arra[1])
 			get_node("Spatial").drawCard(arra,empty_hand)
-		'E': 
+		'E':
 			var id_player = arra[0]
 			if(id_player==id_joueur):
 				my_cards[empty_hand]=null
@@ -97,7 +97,11 @@ func _on_ButtonMenu_pressed():
 	root.add_child(global.controlMenuNode)
 
 func play():
-	get_node("Popup").set_visible(true)
+	for i in  range(3):
+		if(my_cards[i] == null):
+			get_node("Popup").get_child(0).get_child(1).get_child(i).hide()
+	get_node("Popup").show()
+
 
 func _on_Carte1_pressed():
 	selected_card = my_cards[0]
@@ -106,17 +110,17 @@ func _on_Carte1_pressed():
 func _on_Carte2_pressed():
 	selected_card = my_cards[1]
 	index = 1
-	
+
 func _on_Carte3_pressed():
 	selected_card = my_cards[2]
 	index = 2
-	
+
 func _on_Hide_pressed():
 	bool_action = -1
-	get_node("Popup").set_visible(false)
+	#get_node("Popup").set_visible(false)
 	get_node("Popup").popup_hide()
 
 func _on_Reveal_pressed():
 	bool_action = 1
-	get_node("Popup").set_visible(false)
+	#get_node("Popup").set_visible(false)
 	get_node("Popup").popup_hide()
