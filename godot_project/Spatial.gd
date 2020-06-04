@@ -60,7 +60,7 @@ func createBig(x,y,z,rv,cname):
 func revealCard(num_card):
 	var mesh=cardNodes[num_card-1]
 	mesh.set_rotation(Vector3(0,0,0))
-	mesh._setEndPosition(global.pos_reveal_card+Vector3(0,0,global.controlGameNode.cpt_card_reveal*0.3))
+	mesh._setEndPosition(global.pos_reveal_card+Vector3(0,0,global.controlGameNode.cpt_card_reveal*5))#0.3
 	mesh.toBeMoved=1
 	mesh.flip=0
 

@@ -16,7 +16,7 @@ func createNetworkThread():
 func _thread_network_function(userdata):
 	var done=false
 	socket = PacketPeerUDP.new()
-	port = 4008
+	port = 4007
 	if (socket.listen(port,"127.0.0.1") != OK):
 		print("An error occurred listening on port " +str(port))
 		done = true;
@@ -33,7 +33,7 @@ func _thread_network_function(userdata):
 #	pass
 
 func _on_ButtonJouer_pressed():
-	player_name = "West"
+	player_name = "Ouest"
 	var root=get_tree().get_root()
 	var myself=root.get_child(1)
 	print (root,myself)

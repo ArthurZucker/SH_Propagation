@@ -33,44 +33,39 @@ func _networkMessage(mess):
 			id_joueur = int(arra[0])
 			get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name + "ID joueur : "+str(id_joueur))
 		'L': for i in range(4):
-				liste_joueur[i]=int(arra[i])
+				liste_joueur[i]=arra[i]
 		'M':
-			if(int(arra[0])==id_joueur): play()
-			print(id_joueur)
-#			if(int(arra[0])==id_joueur):
-#				if(my_cards[0]!=null):
-#					send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
-#				elif(my_cards[1]!=null):
-#					send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
-#				elif(my_cards[2]!=null):
-#					send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
-#				else:
-#					send_mess("O "+str(id_joueur))
+			if(arra[0]==id_joueur):
+				if(my_cards[0]!=null):
+					play()
+				elif(my_cards[1]!=null):
+					play()
+				elif(my_cards[2]!=null):
+					play()
+				else:
+					send_mess("O "+str(id_joueur))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
-					my_cards[i]=int(arra[i+1])
+					my_cards[i]=arra[i+1]
 			get_node("Spatial").handCard(arra)
 		'H':
-			#var id_player = arra[0]
+			var id_player = arra[0]
 			var num_card = arra[1]
-			cpt_card_hide=cpt_card_hide+1
+			empty_hand = arra[2]
 			get_node("Spatial").hideCard(num_card)
-			for i in range(3):
-				if(my_cards[i]==num_card):
-					empty_hand=i
+			cpt_card_hide=cpt_card_hide+1
+
 		'R':
-			#var id_player = arra[0]
+			var id_player = arra[0]
 			var num_card = arra[1]
-			cpt_card_reveal=cpt_card_reveal+1
+			empty_hand = arra[2]
 			get_node("Spatial").revealCard(num_card)
-			for i in range(3):
-				if(my_cards[i]==num_card):
-					empty_hand=i
+			cpt_card_reveal=cpt_card_reveal+1
 		'P':
 			var id_player = arra[0]
 			if(id_player==id_joueur):
-				my_cards[empty_hand]=int(arra[1])
+				my_cards[empty_hand]=arra[1]
 			get_node("Spatial").drawCard(arra,empty_hand)
 		'E':
 			var id_player = arra[0]

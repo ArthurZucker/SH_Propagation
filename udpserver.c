@@ -294,16 +294,17 @@ int main()
 			{
 				int num_card;
 				int id_joueur;
+				int empty_hand;
 				int replies[10];
 				// mettre en place le jeu en fonction des messages
 				switch (buffer[0]){
 					// revealCard
 					case 'R':
-						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
+						sscanf(buffer,"R %d %d %d",&id_joueur,&num_card,&empty_hand);
 						// faire les bails (attribuer score ou pas si carte utile)
 						tableScore[id_joueur]+=deckBadCard[num_card-1];
 						// on partage la carte revele
-						sprintf(reply,"R %d %d",id_joueur,num_card);
+						sprintf(reply,"R %d %d %d",id_joueur,num_card,empty_hand);
 						broadcastMessage(reply);
 						//on lui donne une carte
 						if(head!=NULL){
@@ -335,8 +336,8 @@ int main()
 						break;
 					// hideCard
 					case 'H':
-						sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-						sprintf(reply,"H %d %d",id_joueur,num_card);
+						sscanf(buffer,"H %d %d %d",&id_joueur,&num_card,&empty_hand);
+						sprintf(reply,"H %d %d %d",id_joueur,num_card,empty_hand);
 						broadcastMessage(reply);
 						//on lui donne une carte
 						if(head!=NULL){
