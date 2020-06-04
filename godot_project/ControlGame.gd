@@ -33,17 +33,17 @@ func _networkMessage(mess):
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			#if(int(arra[0])==id_joueur): play()
-			#print(id_joueur)
-			if(int(arra[0])==id_joueur):
-				if(my_cards[0]!=null):
-					send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
-				elif(my_cards[1]!=null):
-					send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
-				elif(my_cards[2]!=null):
-					send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
-				else:
-					send_mess("O "+str(id_joueur))
+			if(int(arra[0])==id_joueur): play()
+			print(id_joueur)
+#			if(int(arra[0])==id_joueur):
+#				if(my_cards[0]!=null):
+#					send_mess("R "+str(id_joueur)+" "+str(my_cards[0]))
+#				elif(my_cards[1]!=null):
+#					send_mess("H "+str(id_joueur)+" "+str(my_cards[1]))
+#				elif(my_cards[2]!=null):
+#					send_mess("H "+str(id_joueur)+" "+str(my_cards[2]))
+#				else:
+#					send_mess("O "+str(id_joueur))
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
