@@ -253,8 +253,8 @@ int main()
 					printClients();
 
 					// rechercher l'id du joueur qui vient de se connecter
-					//id=findClientByName(clientName);
-					id = nbClients-1;
+					id=findClientByName(clientName);
+					// id = nbClients-1;
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id
@@ -291,95 +291,118 @@ int main()
 					break;
 				}
 			}
-			else if (fsmServer==1 )
+			else if (fsmServer==1)
 			{
 				int num_card;
 				int id_joueur;
-				if (head != NULL) {
-					// mettre en place le jeu en fonction des messages
-					switch (buffer[0]){
-						// revealCard
-						case 'R':
-							sscanf(buffer,"R %d %d",&id_joueur,&num_card);
-							// faire les bails (attribuer score ou pas si carte utile)
-							tableScore[id_joueur]+=deckBadCard[num_card-1];
-							// on partage la carte revele
-							sprintf(reply,"R %d %d",id_joueur,num_card);
-							broadcastMessage(reply);
-							//on lui donne une carte
-							if(head->suivant!=NULL){
-								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
-								broadcastMessage(reply);
-							}
-							else{
-								sprintf(reply,"E %d",id_joueur);
-								broadcastMessage(reply);
-							}
-
-							joueurCourant++;
-			        joueurCourant=joueurCourant%4;
-			        while(udpClients[joueurCourant].etat==0){
-			          joueurCourant++;
-			          joueurCourant=joueurCourant%4;
-			        }
-			        sprintf(reply,"M %d",joueurCourant);
-			        broadcastMessage(reply);
-							break;
-						// hideCard
-						case 'H':
-							sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-							sprintf(reply,"H %d %d",id_joueur,num_card);
-							broadcastMessage(reply);
-							//on lui donne une carte
-							if(head->suivant!=NULL){
-								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
-								broadcastMessage(reply);
-							}
-							else{
-								sprintf(reply,"E %d",id_joueur);
-								broadcastMessage(reply);
-							}
-
-							joueurCourant++;
-			        joueurCourant=joueurCourant%4;
-			        while(udpClients[joueurCourant].etat==0){
-			          joueurCourant++;
-			          joueurCourant=joueurCourant%4;
-			        }
-			        sprintf(reply,"M %d",joueurCourant);
-			        broadcastMessage(reply);
-							break;
-						}
-					}
-					else if(answered<4){
-						//end game here
-						sprintf(reply,"Q");
+				int replies[10];
+				// mettre en place le jeu en fonction des messages
+				switch (buffer[0]){
+					// revealCard
+					case 'R':
+						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
+						// faire les bails (attribuer score ou pas si carte utile)
+						tableScore[id_joueur]+=deckBadCard[num_card-1];
+						// on partage la carte revele
+						sprintf(reply,"R %d %d",id_joueur,num_card);
 						broadcastMessage(reply);
-						int replies[10];
+						//on lui donne une carte
+						if(head!=NULL){
+							if(head->suivant!=NULL){
+								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
+								broadcastMessage(reply);
+							}
+							else{
+								int last_card = head->num_card;
+								head=NULL;
+								sprintf(reply,"P %d %d",id_joueur,last_card);
+								broadcastMessage(reply);
+							}
+						}
+						//pioche empty
+						else{
+							sprintf(reply,"E %d",id_joueur);
+							broadcastMessage(reply);
+						}
+
+						joueurCourant++;
+		        joueurCourant=joueurCourant%4;
+		        while(udpClients[joueurCourant].etat==0){
+		          joueurCourant++;
+		          joueurCourant=joueurCourant%4;
+		        }
+		        sprintf(reply,"M %d",joueurCourant);
+		        broadcastMessage(reply);
+						break;
+					// hideCard
+					case 'H':
+						sscanf(buffer,"H %d %d",&id_joueur,&num_card);
+						sprintf(reply,"H %d %d",id_joueur,num_card);
+						broadcastMessage(reply);
+						//on lui donne une carte
+						if(head!=NULL){
+							if(head->suivant!=NULL){
+								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
+								broadcastMessage(reply);
+							}
+							else{
+								int last_card = head->num_card;
+								head=NULL;
+								sprintf(reply,"P %d %d",id_joueur,last_card);
+								broadcastMessage(reply);
+							}
+						}
+						//pioche empty
+						else{
+							sprintf(reply,"E %d",id_joueur);
+							broadcastMessage(reply);
+						}
+
+						joueurCourant++;
+		        joueurCourant=joueurCourant%4;
+		        while(udpClients[joueurCourant].etat==0){
+		          joueurCourant++;
+		          joueurCourant=joueurCourant%4;
+		        }
+		        sprintf(reply,"M %d",joueurCourant);
+		        broadcastMessage(reply);
+						break;
+					// out joueur n'a plus de carte
+					case 'O':
+						sscanf(buffer,"O %d",&id_joueur);
+						udpClients[id_joueur].etat==0;
+
+						joueurCourant++;
+		        joueurCourant=joueurCourant%4;
+		        while(udpClients[joueurCourant].etat==0){
+		          joueurCourant++;
+		          joueurCourant=joueurCourant%4;
+		        }
+
+						if(udpClients[0].etat==0 && udpClients[1].etat==0 && udpClients[2].etat==0 && udpClients[3].etat==0){
+							sprintf(reply,"Q");
+							broadcastMessage(reply);
+						}
+						else{
+		        	sprintf(reply,"M %d",joueurCourant);
+		        	broadcastMessage(reply);
+						}
+						break;
+					case 'Q':
 						sscanf(buffer,"Q %d %d %d %d %d %d %d %d %d %d %d",&id_joueur,&replies[0],&replies[1],&replies[2],&replies[3],&replies[4],&replies[5],&replies[6],&replies[7],&replies[8],&replies[9]);
 						for (size_t i = 0; i < 10; i++) {
 							if (replies[i] == answers[i])
 								tableScore[id_joueur]+=2;
-
 						}
 						answered++;
 						if (answered<4) {
-							joueurCourant++;
-							joueurCourant=joueurCourant%4;
-							while(udpClients[joueurCourant].etat==0){
-								joueurCourant++;
-								joueurCourant=joueurCourant%4;
-							}
-							sprintf(reply,"M %d",joueurCourant);
+							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
+							fsmServer=0;
+							// to fo finish game here
 						}
-					}
-					else{
-						sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
-						broadcastMessage(reply);
-						fsmServer=0;
-						// to fo finish game here
-					}
+						break;
+				}
 			}
 	}
 	close(sockfd);
