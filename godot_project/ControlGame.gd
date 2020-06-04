@@ -11,7 +11,7 @@ var bool_action
 var index
 var scores = [null,null,null,null]
 func _ready():
-	get_node("Label").set_text("Id joueur : "+ global.controlMenuNode.get_child(0).player_name)
+	get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -29,11 +29,12 @@ func _networkMessage(mess):
 	print(mess.right(2).split_floats(' '))
 	var arra = mess.right(2).split_floats(' ')
 	match mess[0]:
-		'I': id_joueur = int(arra[0])
+		'I': 
+			id_joueur = int(arra[0])
+			get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name + "ID joueur : "+str(id_joueur))
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'M':
-			my_cards[0]=null
 			if(int(arra[0])==id_joueur): play()
 			print(id_joueur)
 #			if(int(arra[0])==id_joueur):
@@ -100,6 +101,8 @@ func play():
 	for i in  range(3):
 		if(my_cards[i] == null):
 			get_node("Popup").get_child(0).get_child(1).get_child(i).hide()
+		else:
+			get_node("Popup").get_child(0).get_child(1).get_child(i).set_text("Carte "+str(my_cards[i]))
 	get_node("Popup").show()
 
 
