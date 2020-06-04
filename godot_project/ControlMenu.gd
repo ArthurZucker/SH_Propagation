@@ -15,7 +15,7 @@ func createNetworkThread():
 func _thread_network_function(userdata):
 	var done=false
 	socket = PacketPeerUDP.new()
-	if (socket.listen(4070+global.direction,"127.0.0.1") != OK):
+	if (socket.listen(4000,"127.0.0.1") != OK):
 		print("An error occurred listening on port 4000")
 		done = true;
 	else:
@@ -36,7 +36,7 @@ func _on_ButtonJouer_pressed():
 	print (root,myself)
 	root.remove_child(myself)
 	root.add_child(global.controlGameNode)
-	var connectMessage="C "+str(global.direction)+" " + str(4070+global.direction)+ " Nord"
+	var connectMessage="C "+str(global.direction)+" " + str(4000)+ " Nord"
 	socket.set_dest_address("127.0.0.1", 4242)
 	socket.put_packet(connectMessage.to_ascii())
 	

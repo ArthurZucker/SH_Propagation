@@ -32,7 +32,7 @@ func _ready():
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 	
 	for i in range(len(cardNames)):
-		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,0,(randf() * (0.2)) -0.1,cardNames[i])
+		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,-40,(randf() * (0.2)) -0.1,cardNames[i])
 
 
 func createBig(x,y,z,rv,cname):
@@ -67,7 +67,7 @@ func revealCard(num_card):
 func hideCard(num_card):
 	var mesh=cardNodes[num_card-1]
 	mesh.set_rotation(Vector3(0,0,0))
-	mesh._setEndPosition(global.pos_hide_card+Vector3(0,global.controlGameNode.cpt_card_hide*0.01,0))
+	mesh._setEndPosition(global.pos_hide_card+Vector3(0,global.controlGameNode.cpt_card_hide*0.008,0))
 	mesh.toBeMoved=1
 	mesh.flip=1
 	
