@@ -17,7 +17,7 @@ func _ready():
 	global.ipAddress=str(IP.get_local_addresses()[2])
 	match global.ipAddress:
 		"127.0.0.1":
-			global.direction=0
+			global.direction=3
 	print ("controlMenuNode=",global.controlMenuNode)
 	print ("controlGameNode=",global.controlGameNode)
 	print ("controlOptionsNode=",global.controlOptionsNode)

@@ -11,7 +11,7 @@ var bool_action
 var index
 var scores = [null,null,null,null]
 func _ready():
-	pass # Replace with function body.
+	get_node("Label").set_text("Id joueur : "+ global.controlMenuNode.get_child(0).player_name)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -97,7 +97,11 @@ func _on_ButtonMenu_pressed():
 
 func play():
 	get_node("Popup").set_visible(true)
-
+	for i in range(3):
+		var card = get_node("Popup").get_child(0).get_child(1).get_child(i)
+		card.set_text("Carte "+my_cards[i])
+		if(my_cards[i]==null):
+			card.set_disable(true)
 
 func _on_Carte1_pressed():
 	selected_card = my_cards[0]

@@ -2,7 +2,8 @@ extends Control
 
 var networkThread
 var socket
-
+var port
+var player_name
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	createNetworkThread()
@@ -15,11 +16,12 @@ func createNetworkThread():
 func _thread_network_function(userdata):
 	var done=false
 	socket = PacketPeerUDP.new()
-	if (socket.listen(4000,"127.0.0.1") != OK):
-		print("An error occurred listening on port 4000")
+	port = 4007
+	if (socket.listen(port,"127.0.0.1") != OK):
+		print("An error occurred listening on port " +str(4005))
 		done = true;
 	else:
-		print("Listening on port 4000+global.direction on 127.0.0.1")	
+		print("Listening on port" +str(port)+ "on 127.0.0.1")	
 	while (done!=true):
 		if(socket.get_available_packet_count() > 0):
 			var data = socket.get_packet().get_string_from_ascii()
@@ -31,12 +33,13 @@ func _thread_network_function(userdata):
 #	pass
 
 func _on_ButtonJouer_pressed():
+	player_name = "West"
 	var root=get_tree().get_root()
 	var myself=root.get_child(1)
 	print (root,myself)
 	root.remove_child(myself)
 	root.add_child(global.controlGameNode)
-	var connectMessage="C "+str(global.direction)+" " + str(4000)+ " Nord"
+	var connectMessage="C "+str(global.direction)+" " + str(port)+ " "+player_name
 	socket.set_dest_address("127.0.0.1", 4242)
 	socket.put_packet(connectMessage.to_ascii())
 	
