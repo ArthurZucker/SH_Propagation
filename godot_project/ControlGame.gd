@@ -50,14 +50,13 @@ func _networkMessage(mess):
 					my_cards[i]=arra[i+1]
 			get_node("Spatial").handCard(arra)
 		'H':
-			var id_player = arra[0]
+			#var id_player = arra[0]
 			var num_card = arra[1]
 			empty_hand = arra[2]
 			get_node("Spatial").hideCard(num_card)
 			cpt_card_hide=cpt_card_hide+1
-
 		'R':
-			var id_player = arra[0]
+			#var id_player = arra[0]
 			var num_card = arra[1]
 			empty_hand = arra[2]
 			get_node("Spatial").revealCard(num_card)

@@ -370,20 +370,19 @@ int main()
 					// out joueur n'a plus de carte
 					case 'O':
 						sscanf(buffer,"O %d",&id_joueur);
-						udpClients[id_joueur].etat==0;
-
-						joueurCourant++;
-		        joueurCourant=joueurCourant%4;
-		        while(udpClients[joueurCourant].etat==0){
-		          joueurCourant++;
-		          joueurCourant=joueurCourant%4;
-		        }
+						udpClients[id_joueur].etat=0;
 
 						if(udpClients[0].etat==0 && udpClients[1].etat==0 && udpClients[2].etat==0 && udpClients[3].etat==0){
 							sprintf(reply,"Q");
 							broadcastMessage(reply);
 						}
 						else{
+							joueurCourant++;
+							joueurCourant=joueurCourant%4;
+							while(udpClients[joueurCourant].etat==0){
+								joueurCourant++;
+								joueurCourant=joueurCourant%4;
+							}
 		        	sprintf(reply,"M %d",joueurCourant);
 		        	broadcastMessage(reply);
 						}
@@ -395,7 +394,8 @@ int main()
 								tableScore[id_joueur]+=2;
 						}
 						answered++;
-						if (answered<4) {
+						printf("%d \n",answered);
+						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;

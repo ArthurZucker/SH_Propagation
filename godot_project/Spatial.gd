@@ -78,7 +78,7 @@ func handCard(data):
 		var mesh=cardNodes[num_card-1]
 		mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,i*5))
 		mesh.toBeMoved=1
-		if(id_player==1 ||id_player==3):
+		if(id_player==1 || id_player==3):
 			mesh.flip=1
 			mesh.set_rotation(Vector3(0,0,1.5))
 		else:
@@ -91,7 +91,7 @@ func drawCard(data,empty_hand):
 	var mesh=cardNodes[num_card-1]
 	mesh._setEndPosition(global.pos[id_player]+Vector3(0,0,empty_hand*5))
 	mesh.toBeMoved=1
-	if(id_player==1 ||id_player==3):
+	if(id_player==1 || id_player==3):
 		mesh.flip=1
 		mesh.set_rotation(Vector3(0,0,1.5))
 	else:
