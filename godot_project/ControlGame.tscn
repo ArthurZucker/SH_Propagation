@@ -122,7 +122,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Popup/VBoxContainer"]
+[node name="Card_Select" type="HBoxContainer" parent="Popup/VBoxContainer"]
 margin_top = 32.0
 margin_right = 349.0
 margin_bottom = 56.0
@@ -130,7 +130,7 @@ size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 
-[node name="Carte1" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
+[node name="Carte1" type="CheckBox" parent="Popup/VBoxContainer/Card_Select"]
 margin_left = 35.0
 margin_right = 108.0
 margin_bottom = 24.0
@@ -139,7 +139,7 @@ text = "Carte 1"
 align = 1
 script = ExtResource( 7 )
 
-[node name="Carte2" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
+[node name="Carte2" type="CheckBox" parent="Popup/VBoxContainer/Card_Select"]
 margin_left = 138.0
 margin_right = 211.0
 margin_bottom = 24.0
@@ -149,7 +149,7 @@ text = "Carte 2"
 align = 1
 script = ExtResource( 9 )
 
-[node name="Carte3" type="CheckBox" parent="Popup/VBoxContainer/HBoxContainer2"]
+[node name="Carte3" type="CheckBox" parent="Popup/VBoxContainer/Card_Select"]
 margin_left = 241.0
 margin_right = 314.0
 margin_bottom = 24.0
@@ -159,7 +159,7 @@ text = "Carte 3"
 align = 1
 script = ExtResource( 10 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Popup/VBoxContainer"]
+[node name="HR" type="HBoxContainer" parent="Popup/VBoxContainer"]
 margin_top = 60.0
 margin_right = 349.0
 margin_bottom = 80.0
@@ -167,14 +167,14 @@ size_flags_horizontal = 3
 custom_constants/separation = 100
 alignment = 1
 
-[node name="Hide" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
+[node name="Hide" type="Button" parent="Popup/VBoxContainer/HR"]
 margin_left = 76.0
 margin_right = 118.0
 margin_bottom = 20.0
 group = SubResource( 4 )
 text = "Hide"
 
-[node name="Reveal" type="Button" parent="Popup/VBoxContainer/HBoxContainer"]
+[node name="Reveal" type="Button" parent="Popup/VBoxContainer/HR"]
 margin_left = 218.0
 margin_right = 272.0
 margin_bottom = 20.0
@@ -217,8 +217,8 @@ valign = 1
 autowrap = true
 [connection signal="pressed" from="ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
 [connection signal="pressed" from="ButtonMenu2" to="." method="_on_ButtonMenu2_pressed"]
-[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Carte1" to="." method="_on_Carte1_pressed"]
-[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Carte2" to="." method="_on_Carte2_pressed"]
-[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer2/Carte3" to="." method="_on_Carte3_pressed"]
-[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Hide" to="." method="_on_Hide_pressed"]
-[connection signal="pressed" from="Popup/VBoxContainer/HBoxContainer/Reveal" to="." method="_on_Reveal_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte1" to="." method="_on_Carte1_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte2" to="." method="_on_Carte2_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte3" to="." method="_on_Carte3_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HR/Hide" to="." method="_on_Hide_pressed"]
+[connection signal="pressed" from="Popup/VBoxContainer/HR/Reveal" to="." method="_on_Reveal_pressed"]

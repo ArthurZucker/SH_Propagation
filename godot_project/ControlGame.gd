@@ -39,7 +39,7 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'C':
 			shuffle = arra
-			yield(get_node("Spatial")._create(),"over")
+			get_node("Spatial")._create()
 		'M':
 			if(arra[0]==id_joueur):
 				if(my_cards[0]!=null):
@@ -93,28 +93,34 @@ func _on_ButtonMenu_pressed():
 	root.add_child(global.controlMenuNode)
 
 func play():
-	get_node("Popup/VBoxContainer/HBoxContainer").hide()
 	for i in  range(3):
+		print(my_cards[i])
 		if(my_cards[i] == null):
 			get_node("Popup").get_child(0).get_child(1).get_child(i).hide()
 		else:
 			get_node("Popup").get_child(0).get_child(1).get_child(i).set_text("Carte "+str(my_cards[i]))
+			get_node("Popup").get_child(0).get_child(1).get_child(i).show()
 	get_node("Popup").show()
+	get_node("Popup/VBoxContainer/HR/Hide").hide()
+	get_node("Popup/VBoxContainer/HR/Reveal").hide()
 
 
 func _on_Carte1_pressed():
 	selected_card = my_cards[0]
-	get_node("Popup/VBoxContainer/HBoxContainer").show()
+	get_node("Popup/VBoxContainer/HR/Hide").show()
+	get_node("Popup/VBoxContainer/HR/Reveal").show()
 	index = 0
 
 func _on_Carte2_pressed():
 	selected_card = my_cards[1]
-	get_node("Popup/VBoxContainer/HBoxContainer").show()
+	get_node("Popup/VBoxContainer/HR/Hide").show()
+	get_node("Popup/VBoxContainer/HR/Reveal").show()
 	index = 1
 
 func _on_Carte3_pressed():
 	selected_card = my_cards[2]
-	get_node("Popup/VBoxContainer/HBoxContainer").show()
+	get_node("Popup/VBoxContainer/HR/Hide").show()
+	get_node("Popup/VBoxContainer/HR/Reveal").show()
 	index = 2
 
 func _on_Hide_pressed():
