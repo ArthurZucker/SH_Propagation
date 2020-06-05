@@ -171,7 +171,7 @@ func _on_Reveal_pressed():
 
 
 func _on_ButtonMenu2_pressed():
-	
+	get_node("ColorRect4").hide()
 	if(hidden == true):
 		get_node("ColorRect").show()
 		hidden = false
@@ -179,7 +179,6 @@ func _on_ButtonMenu2_pressed():
 				get_node("ColorRect5").hide()
 				hidden5 = true
 	else:
-		
 		get_node("ColorRect").hide()
 		hidden = true
 #Question 1
@@ -321,6 +320,7 @@ func _on_CheckBox37_pressed():
 
 
 func _on_Button_pressed():
+	
 	var sum = 0
 	for i in range(10):
 		sum+=pressed_answers[i]
@@ -336,8 +336,6 @@ func _on_Button_pressed():
 		print("vous n'avez pas répondu à toutes les question")
 		
 		
-
-
 func _on_ButtonMenu3_pressed():
 	get_node("ColorRect4").hide()
 	if(hidden5 == true):
