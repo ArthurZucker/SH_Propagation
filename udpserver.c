@@ -301,7 +301,7 @@ int main()
 					// revealCard
 					case 'R':
 						sscanf(buffer,"R %d %d %d",&id_joueur,&num_card,&empty_hand);
-						// faire les bails (attribuer score ou pas si carte utile)
+						// enlever des points si c'est une mauvaise carte
 						tableScore[id_joueur]+=deckBadCard[num_card-1];
 						// on partage la carte revele
 						sprintf(reply,"R %d %d %d",id_joueur,num_card,empty_hand);
@@ -324,6 +324,9 @@ int main()
 							sprintf(reply,"E %d",id_joueur);
 							broadcastMessage(reply);
 						}
+
+						// sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
+						// broadcastMessage(reply); // pour tester score
 
 						joueurCourant++;
 		        joueurCourant=joueurCourant%4;
@@ -387,6 +390,7 @@ int main()
 		        	broadcastMessage(reply);
 						}
 						break;
+					// Question pour résoudre l'affaire
 					case 'Q':
 						sscanf(buffer,"Q %d %d %d %d %d %d %d %d %d %d %d",&id_joueur,&replies[0],&replies[1],&replies[2],&replies[3],&replies[4],&replies[5],&replies[6],&replies[7],&replies[8],&replies[9]);
 						for (size_t i = 0; i < 10; i++) {
@@ -395,11 +399,11 @@ int main()
 						}
 						answered++;
 						printf("%d \n",answered);
+						//Envoie des scores
 						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;
-							// to fo finish game here
 						}
 						break;
 				}
