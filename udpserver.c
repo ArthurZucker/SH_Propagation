@@ -220,6 +220,16 @@ int main()
 
 	int len, n;
 	melangerDeck();
+	//create deck string
+	char stringBuffer[40] =""; // Needs to be more than big enough to hold all the digits of an int
+	char outputStrings[100];
+	for (int i = 0 ; i < 32 ; ++i)
+	{
+			snprintf(stringBuffer, 40, " %d", deck[i]);
+			strcat(outputStrings,stringBuffer);
+	}
+	printf("%s\n", outputStrings);
+	//
 	Chaine *head = init_pioche();
 	joueurCourant = 0;
 	int answered = 0;
@@ -270,9 +280,14 @@ int main()
 
 					Impossible de se déplacer à un z<10cm au dessus de la table (pas de triche)
 					*/
+
+					sprintf(reply,"C%s", outputStrings);
+					sendMessageToGodotClient(udpClients[id].ipAddress,udpClients[id].port,reply);
 					// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
 					sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
 					broadcastMessage(reply);
+
+
 
 					// Si le nombre de joueurs atteint 4, alors on peut lancer le jeu
 					if (nbClients==4)

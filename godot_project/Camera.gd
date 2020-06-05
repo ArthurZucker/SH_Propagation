@@ -10,6 +10,7 @@ var coef=15.0
 #
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# Il faut ajouter les conditions pour ne pas pénetrer dans le coin des adversaires
 #func _process(delta):
 #	if Input.get_connected_joypads().size() > 0:
 #		var xAxis = Input.get_joy_axis(0,JOY_AXIS_0)
@@ -94,6 +95,11 @@ var _triggered=false
 const ROTATION_MULTIPLIER = 500
 
 func _ready():
+	match global.controlGameNode.id_joueur:
+		0:translate(Vector3(-30,20,-30))
+		1:translate(Vector3(30,20,-30))
+		2:translate(Vector3(-30,20,30))
+		3:translate(Vector3(30,20,-30))
 	_check_actions([
 		forward_action,
 		backward_action,
@@ -119,6 +125,7 @@ func _ready():
 		_gui = preload("camera_control_gui.gd")
 		_gui = _gui.new(self, gui_action)
 		add_child(_gui)
+		pass
 
 func _input(event):
 		if len(trigger_action)!=0:
@@ -169,7 +176,7 @@ func _update_views_physics(delta):
 
 func _update_movement(delta):
 	var offset = max_speed * acceleration * _direction
-
+	
 	_speed.x = clamp(_speed.x + offset.x, -max_speed.x, max_speed.x)
 	_speed.y = clamp(_speed.y + offset.y, -max_speed.y, max_speed.y)
 	_speed.z = clamp(_speed.z + offset.z, -max_speed.z, max_speed.z)

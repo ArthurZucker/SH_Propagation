@@ -110,5 +110,11 @@ func _on_Button_pressed():
 	for i in range(10):
 		reponse+= str(answers[i])+" "
 	control.send_mess("Q "+str(control.id_joueur)+" " + reponse)
-	
+
+func _change():	
+	var root=get_tree().get_root()
+	var myself=root.get_child(1)
+	print (root,myself)
+	root.remove_child(myself)
+	root.add_child(global.controlScoreNode)
 	
