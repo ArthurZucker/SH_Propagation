@@ -15,6 +15,7 @@ var scores = [null,null,null,null]
 func _ready():
 	get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name)
 	get_node("ColorRect").hide()
+	get_node("ColorRect2").hide()
 	hidden = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -78,13 +79,13 @@ func _networkMessage(mess):
 			if(id_player==id_joueur):
 				my_cards[empty_hand]=null
 		'Q':
+			get_node("ColorRect2").show()
+		'S':
 			var root=get_tree().get_root()
 			var myself=root.get_child(1)
 			print (root,myself)
 			root.remove_child(myself)
-			root.add_child(global.controlEndGameNode)
-		'S':
-			global.controlEndGameNode._change()
+			root.add_child(global.controlScore)
 
 func _on_ButtonMenu_pressed():
 	var root=get_tree().get_root()
