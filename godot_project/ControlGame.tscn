@@ -22,6 +22,8 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="ButtonGroup" id=4]
 
+[sub_resource type="ButtonGroup" id=5]
+
 [sub_resource type="ButtonGroup" id=6]
 
 [sub_resource type="ButtonGroup" id=7]
@@ -39,8 +41,6 @@ font_data = ExtResource( 12 )
 [sub_resource type="ButtonGroup" id=13]
 
 [sub_resource type="ButtonGroup" id=14]
-
-[sub_resource type="ButtonGroup" id=15]
 
 [node name="ControlGame" type="Control"]
 anchor_right = 1.0
@@ -383,28 +383,28 @@ align = 1
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 6 )
+group = SubResource( 5 )
 text = "A : D'une employée du laboratoire"
 
 [node name="CheckBox2" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 6 )
+group = SubResource( 5 )
 text = "B : D'une espionne"
 
 [node name="CheckBox3" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 6 )
+group = SubResource( 5 )
 text = "C: D'une activiste des droits des animaux"
 
 [node name="CheckBox4" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 6 )
+group = SubResource( 5 )
 text = "D : D'une autre personne"
 
 [node name="Q2" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -423,28 +423,28 @@ autowrap = true
 margin_top = 35.0
 margin_right = 435.0
 margin_bottom = 59.0
-group = SubResource( 7 )
+group = SubResource( 6 )
 text = "A : D'une employée du laboratoire"
 
 [node name="CheckBox7" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
 margin_top = 63.0
 margin_right = 435.0
 margin_bottom = 87.0
-group = SubResource( 7 )
+group = SubResource( 6 )
 text = "B : D'une espionne"
 
 [node name="CheckBox6" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
 margin_top = 91.0
 margin_right = 435.0
 margin_bottom = 115.0
-group = SubResource( 7 )
+group = SubResource( 6 )
 text = "C : D'une activiste des droits des animaux"
 
 [node name="CheckBox5" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
 margin_top = 119.0
 margin_right = 435.0
 margin_bottom = 143.0
-group = SubResource( 7 )
+group = SubResource( 6 )
 text = "D : D'une autre personne "
 
 [node name="Q3" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -463,28 +463,28 @@ autowrap = true
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 8 )
+group = SubResource( 7 )
 text = "A : Emma"
 
 [node name="CheckBox11" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 8 )
+group = SubResource( 7 )
 text = "B : Mia"
 
 [node name="CheckBox10" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 8 )
+group = SubResource( 7 )
 text = "C : Magnus"
 
 [node name="CheckBox9" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 8 )
+group = SubResource( 7 )
 text = "D : Une autre personne"
 
 [node name="Q4" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -503,28 +503,28 @@ autowrap = true
 margin_top = 35.0
 margin_right = 435.0
 margin_bottom = 59.0
-group = SubResource( 9 )
+group = SubResource( 8 )
 text = "A : Un espionnage industriel"
 
 [node name="CheckBox15" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
 margin_top = 63.0
 margin_right = 435.0
 margin_bottom = 87.0
-group = SubResource( 9 )
+group = SubResource( 8 )
 text = "B : Un acte militant"
 
 [node name="CheckBox14" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
 margin_top = 91.0
 margin_right = 435.0
 margin_bottom = 115.0
-group = SubResource( 9 )
+group = SubResource( 8 )
 text = "C : Un crime violent"
 
 [node name="CheckBox13" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
 margin_top = 119.0
 margin_right = 435.0
 margin_bottom = 143.0
-group = SubResource( 9 )
+group = SubResource( 8 )
 text = "D : Un rendez-vous galant"
 
 [node name="Q5" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -543,28 +543,28 @@ autowrap = true
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 10 )
+group = SubResource( 9 )
 text = "A : Un employé a intentionnellement mis le feu"
 
 [node name="CheckBox19" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 10 )
+group = SubResource( 9 )
 text = "B : Un employé a accidentellement mis le feu"
 
 [node name="CheckBox18" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 10 )
+group = SubResource( 9 )
 text = "C : Un intrus a intentionnellement mis le feu"
 
 [node name="CheckBox17" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 10 )
+group = SubResource( 9 )
 text = "D : Un intrus a accidentellement mis le feu"
 
 [node name="Q6" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -583,28 +583,28 @@ autowrap = true
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 11 )
+group = SubResource( 10 )
 text = "A : Dans le laboratoire 11"
 
 [node name="CheckBox23" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 11 )
+group = SubResource( 10 )
 text = "B : Dans le laboratoire 12"
 
 [node name="CheckBox22" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 11 )
+group = SubResource( 10 )
 text = "C : Dans le laboratoire 13"
 
 [node name="CheckBox21" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 11 )
+group = SubResource( 10 )
 text = "D : Ailleurs"
 
 [node name="Q7" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -623,28 +623,28 @@ autowrap = true
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 12 )
+group = SubResource( 11 )
 text = "A : Pour empêcher quiconque de sortir"
 
 [node name="CheckBox27" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 12 )
+group = SubResource( 11 )
 text = "B : Pour éviter d'être interrompu"
 
 [node name="CheckBox26" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 12 )
+group = SubResource( 11 )
 text = "C : Pour éviter la propagation d'un virus"
 
 [node name="CheckBox25" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 12 )
+group = SubResource( 11 )
 text = "D : Pour éviter la propagation du feu"
 
 [node name="Q8" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -663,28 +663,28 @@ autowrap = true
 margin_top = 35.0
 margin_right = 435.0
 margin_bottom = 59.0
-group = SubResource( 13 )
+group = SubResource( 12 )
 text = "A : Pour désigner le coupable"
 
 [node name="CheckBox31" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
 margin_top = 63.0
 margin_right = 435.0
 margin_bottom = 87.0
-group = SubResource( 13 )
+group = SubResource( 12 )
 text = "B : Pour avertir du danger"
 
 [node name="CheckBox30" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
 margin_top = 91.0
 margin_right = 435.0
 margin_bottom = 115.0
-group = SubResource( 13 )
+group = SubResource( 12 )
 text = "C : Pour expliquer ses actes"
 
 [node name="CheckBox29" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
 margin_top = 119.0
 margin_right = 435.0
 margin_bottom = 143.0
-group = SubResource( 13 )
+group = SubResource( 12 )
 text = "D : Pour indiquer une heure spécifique"
 
 [node name="Q9" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -703,28 +703,28 @@ autowrap = true
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
-group = SubResource( 14 )
+group = SubResource( 13 )
 text = "A : Parce qu'elle était sortie fumer"
 
 [node name="CheckBox35" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
-group = SubResource( 14 )
+group = SubResource( 13 )
 text = "B : Parce qu'elle se préparait a fuir les lieux"
 
 [node name="CheckBox34" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
-group = SubResource( 14 )
+group = SubResource( 13 )
 text = "C : Parce qu'elle venait d'être licenciée"
 
 [node name="CheckBox33" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
-group = SubResource( 14 )
+group = SubResource( 13 )
 text = "D : C'est non pertinent pour l'enquête"
 
 [node name="Q10" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
@@ -743,28 +743,28 @@ autowrap = true
 margin_top = 35.0
 margin_right = 435.0
 margin_bottom = 59.0
-group = SubResource( 15 )
+group = SubResource( 14 )
 text = "A : Parce qu'il était dans le bâtiment"
 
 [node name="CheckBox39" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
 margin_top = 63.0
 margin_right = 435.0
 margin_bottom = 87.0
-group = SubResource( 15 )
+group = SubResource( 14 )
 text = "B : Parce quelqu'un voulait qu'il y apparaisse"
 
 [node name="CheckBox38" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
 margin_top = 91.0
 margin_right = 435.0
 margin_bottom = 115.0
-group = SubResource( 15 )
+group = SubResource( 14 )
 text = "C : Parce que quelqu'un d'autre a utilisé son badge d'accès"
 
 [node name="CheckBox37" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
 margin_top = 119.0
 margin_right = 435.0
 margin_bottom = 143.0
-group = SubResource( 15 )
+group = SubResource( 14 )
 text = "D : C'est non pertinent pour l'enquête"
 
 [node name="Button" type="Button" parent="ColorRect2/ScrollContainer/VBoxContainer"]
