@@ -35,6 +35,7 @@ func _networkMessage(mess):
 		'I': 
 			id_joueur = int(arra[0])
 			get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name + "ID joueur : "+str(id_joueur))
+			get_node("Spatial/Camera").init_pos()
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
 		'C':

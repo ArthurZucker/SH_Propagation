@@ -264,6 +264,7 @@ int main()
 
 					// rechercher l'id du joueur qui vient de se connecter
 					id=findClientByName(clientName);
+					// id=nbClients-1;
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id
@@ -301,8 +302,8 @@ int main()
 						sprintf(reply,"M %d",joueurCourant);
 						broadcastMessage(reply);
 
-						sprintf(reply,"Q");
-						broadcastMessage(reply);
+						// sprintf(reply,"Q");
+						// broadcastMessage(reply);
 						fsmServer=1;
 					}
 					break;
@@ -415,7 +416,7 @@ int main()
 						answered++;
 						printf("%d \n",answered);
 						//Envoie des scores
-						if (answered==1) {
+						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;
