@@ -302,8 +302,8 @@ int main()
 						sprintf(reply,"M %d",joueurCourant);
 						broadcastMessage(reply);
 
-						// sprintf(reply,"Q");
-						// broadcastMessage(reply);
+						sprintf(reply,"Q");
+						broadcastMessage(reply);
 						fsmServer=1;
 					}
 					break;
@@ -416,7 +416,7 @@ int main()
 						answered++;
 						printf("%d \n",answered);
 						//Envoie des scores
-						if (answered==4) {
+						if (answered==1) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;
