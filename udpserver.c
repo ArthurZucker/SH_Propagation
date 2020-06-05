@@ -222,14 +222,14 @@ int main()
 	melangerDeck();
 	//create deck string
 	char stringBuffer[40] =""; // Needs to be more than big enough to hold all the digits of an int
-	char outputStrings[100];
+	char outputStrings[100]="";
 	for (int i = 0 ; i < 32 ; ++i)
 	{
 			snprintf(stringBuffer, 40, " %d", deck[i]);
 			strcat(outputStrings,stringBuffer);
 	}
 	printf("%s\n", outputStrings);
-	//
+
 	Chaine *head = init_pioche();
 	joueurCourant = 0;
 	int answered = 0;

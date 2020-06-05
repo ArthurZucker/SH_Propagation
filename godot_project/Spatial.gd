@@ -33,16 +33,13 @@ func _ready():
 #	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 #
 #	for j in range(len(cardNames)):
-#		var i = global.controlGameNode.shuffle[j]
-#		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*i,-40,(randf() * (0.2)) -0.1,cardNames[i])
+#		#var i = global.controlGameNode.shuffle[j]
+#		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*j,-40,(randf() * (0.2)) -0.1,cardNames[j])
 
 func _create():
 	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
-	print("len cardnames "+str(len(cardNames)))
 	for j in range(len(cardNames)):
-		print(j)
-		print("shuffle[j]"+str(global.controlGameNode.shuffle[j]))
 		var i = global.controlGameNode.shuffle[j]
 		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*j,-40,(randf() * (0.2)) -0.1,cardNames[i])
 
