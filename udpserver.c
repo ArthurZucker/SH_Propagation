@@ -292,6 +292,8 @@ int main()
 						sprintf(reply,"M %d",joueurCourant);
 						broadcastMessage(reply);
 
+						// sprintf(reply,"Q");
+						// broadcastMessage(reply);
 						fsmServer=1;
 					}
 					break;
@@ -329,7 +331,7 @@ int main()
 						//pioche empty
 						else{
 							sprintf(reply,"E %d",id_joueur);
-							broadcastMessage(reply);
+							sendMessageToGodotClient(udpClients[id_joueur].ipAddress,udpClients[id_joueur].port,reply);
 						}
 
 						joueurCourant++;
@@ -362,7 +364,7 @@ int main()
 						//pioche empty
 						else{
 							sprintf(reply,"E %d",id_joueur);
-							broadcastMessage(reply);
+							sendMessageToGodotClient(udpClients[id_joueur].ipAddress,udpClients[id_joueur].port,reply);
 						}
 
 						joueurCourant++;
@@ -402,8 +404,8 @@ int main()
 								tableScore[id_joueur]+=2;
 						}
 						answered++;
-						printf("%d \n",answered);
-						//Envoie des scores
+
+						//Envoie les scores
 						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
