@@ -340,8 +340,6 @@ func _on_ButtonSubmit_pressed(): # On soumet les réponses au question
 		control.send_mess("Q "+str(control.id_joueur)+" " + reponse)
 		get_node("Questionnaire").hide()
 		get_node("Patientez").show()
-	else:
-		print("vous n'avez pas répondu à toutes les questions")
 		
 		
 func _on_ButtonSolu_pressed(): #Permet d'afficher la solution

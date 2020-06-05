@@ -1,11 +1,10 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://ControlGame.gd" type="Script" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
 [ext_resource path="res://Spatial.gd" type="Script" id=3]
 [ext_resource path="res://Table.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://TextureWood.jpg" type="Texture" id=5]
-[ext_resource path="res://Dialog.gd" type="Script" id=6]
 [ext_resource path="res://Carte1.gd" type="Script" id=7]
 [ext_resource path="res://Popup.gd" type="Script" id=8]
 [ext_resource path="res://Carte2.gd" type="Script" id=9]
@@ -56,18 +55,6 @@ script = ExtResource( 3 )
 [node name="Camera" type="Camera" parent="Spatial"]
 transform = Transform( -1.0554e-07, -0.76181, 0.647801, -1.24115e-07, 0.647801, 0.76181, -1, 7.10543e-15, -1.62921e-07, 10, 10, 0 )
 script = ExtResource( 2 )
-
-[node name="Board" type="MeshInstance" parent="Spatial"]
-
-[node name="Dialog" type="Node2D" parent="Spatial"]
-script = ExtResource( 6 )
-
-[node name="Sprite" type="Sprite" parent="Spatial/Dialog"]
-position = Vector2( 507, 440 )
-scale = Vector2( 0.953125, 0.828125 )
-
-[node name="Score" type="Sprite" parent="Spatial/Dialog"]
-position = Vector2( 79.114, 378.921 )
 
 [node name="Table" type="CSGMesh" parent="Spatial"]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -3, 0 )

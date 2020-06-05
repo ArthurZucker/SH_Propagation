@@ -2,18 +2,17 @@ extends Control
 
 var networkThread
 var socket
-var port
-var player_name
+var port 		# Port du joueur
+var player_name # Nom du joueur pour faiciliter l'exportation en éxéctuable
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	createNetworkThread()
-	pass
 
 func createNetworkThread():
 	networkThread=Thread.new()
 	networkThread.start(self, "_thread_network_function", "networkThread")
 
-func _thread_network_function(userdata):
+func _thread_network_function(_userdata):
 	var done=false
 	socket = PacketPeerUDP.new()
 	port = 4007
@@ -33,7 +32,7 @@ func _thread_network_function(userdata):
 #	pass
 
 func _on_ButtonJouer_pressed():
-	player_name = "Ouest"
+	player_name = "Ouest" # Pour avoir un nom différent
 	var root=get_tree().get_root()
 	var myself=root.get_child(1)
 	print (root,myself)
