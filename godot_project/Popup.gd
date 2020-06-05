@@ -14,8 +14,8 @@ func popup_hide():
 	hide()
 	var control  = get_tree().get_root().get_node("ControlGame")
 	match control.bool_action:
-		-1: control.send_mess("H "+str(control.id_joueur)+" "+str(control.selected_card))
-		1 : control.send_mess("R "+str(control.id_joueur)+" "+str(control.selected_card))
+		-1: control.send_mess("H "+str(control.id_joueur)+" "+str(control.selected_card)+ " "+str(control.index))
+		1 : control.send_mess("R "+str(control.id_joueur)+" "+str(control.selected_card)+ " "+str(control.index))
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

@@ -16,12 +16,12 @@ func createNetworkThread():
 func _thread_network_function(userdata):
 	var done=false
 	socket = PacketPeerUDP.new()
-	port = 4007
+	port = 4010
 	if (socket.listen(port,"127.0.0.1") != OK):
-		print("An error occurred listening on port " +str(4005))
+		print("An error occurred listening on port " +str(port))
 		done = true;
 	else:
-		print("Listening on port" +str(port)+ "on 127.0.0.1")	
+		print("Listening on port" +str(port)+ "on 127.0.0.1")
 	while (done!=true):
 		if(socket.get_available_packet_count() > 0):
 			var data = socket.get_packet().get_string_from_ascii()
@@ -33,7 +33,7 @@ func _thread_network_function(userdata):
 #	pass
 
 func _on_ButtonJouer_pressed():
-	player_name = "West"
+	player_name = "Sud"
 	var root=get_tree().get_root()
 	var myself=root.get_child(1)
 	print (root,myself)
@@ -42,7 +42,7 @@ func _on_ButtonJouer_pressed():
 	var connectMessage="C "+str(global.direction)+" " + str(port)+ " "+player_name
 	socket.set_dest_address("127.0.0.1", 4242)
 	socket.put_packet(connectMessage.to_ascii())
-	
+
 
 func _on_ButtonOptions_pressed():
 	var root=get_tree().get_root()

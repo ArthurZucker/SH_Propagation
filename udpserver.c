@@ -264,7 +264,6 @@ int main()
 
 					// rechercher l'id du joueur qui vient de se connecter
 					id=findClientByName(clientName);
-					// id = nbClients-1;
 					printf("id=%d\n",id);
 
 					// lui envoyer un message personnel pour lui communiquer son id
@@ -310,16 +309,17 @@ int main()
 			{
 				int num_card;
 				int id_joueur;
+				int empty_hand;
 				int replies[10];
 				// mettre en place le jeu en fonction des messages
 				switch (buffer[0]){
 					// revealCard
 					case 'R':
-						sscanf(buffer,"R %d %d",&id_joueur,&num_card);
+						sscanf(buffer,"R %d %d %d",&id_joueur,&num_card,&empty_hand);
 						// faire les bails (attribuer score ou pas si carte utile)
 						tableScore[id_joueur]+=deckBadCard[num_card-1];
 						// on partage la carte revele
-						sprintf(reply,"R %d %d",id_joueur,num_card);
+						sprintf(reply,"R %d %d %d",id_joueur,num_card,empty_hand);
 						broadcastMessage(reply);
 						//on lui donne une carte
 						if(head!=NULL){
@@ -351,8 +351,8 @@ int main()
 						break;
 					// hideCard
 					case 'H':
-						sscanf(buffer,"H %d %d",&id_joueur,&num_card);
-						sprintf(reply,"H %d %d",id_joueur,num_card);
+						sscanf(buffer,"H %d %d %d",&id_joueur,&num_card,&empty_hand);
+						sprintf(reply,"H %d %d %d",id_joueur,num_card,empty_hand);
 						broadcastMessage(reply);
 						//on lui donne une carte
 						if(head!=NULL){
@@ -385,20 +385,19 @@ int main()
 					// out joueur n'a plus de carte
 					case 'O':
 						sscanf(buffer,"O %d",&id_joueur);
-						udpClients[id_joueur].etat==0;
-
-						joueurCourant++;
-		        joueurCourant=joueurCourant%4;
-		        while(udpClients[joueurCourant].etat==0){
-		          joueurCourant++;
-		          joueurCourant=joueurCourant%4;
-		        }
+						udpClients[id_joueur].etat=0;
 
 						if(udpClients[0].etat==0 && udpClients[1].etat==0 && udpClients[2].etat==0 && udpClients[3].etat==0){
 							sprintf(reply,"Q");
 							broadcastMessage(reply);
 						}
 						else{
+							joueurCourant++;
+							joueurCourant=joueurCourant%4;
+							while(udpClients[joueurCourant].etat==0){
+								joueurCourant++;
+								joueurCourant=joueurCourant%4;
+							}
 		        	sprintf(reply,"M %d",joueurCourant);
 		        	broadcastMessage(reply);
 						}
@@ -410,7 +409,8 @@ int main()
 								tableScore[id_joueur]+=2;
 						}
 						answered++;
-						if (answered<4) {
+						printf("%d \n",answered);
+						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;
