@@ -22,6 +22,7 @@ func _ready():
 	get_node("ColorRect3").hide()
 	get_node("ColorRect4").hide()
 	get_node("ColorRect5").hide()
+	get_node("ColorRect6").hide()
 	get_node("ButtonMenu3").hide()
 	hidden = true
 	hidden5 = true
@@ -43,7 +44,7 @@ func _networkMessage(mess):
 	match mess[0]:
 		'I': 
 			id_joueur = int(arra[0])
-			get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name + "\nID joueur : "+str(id_joueur))
+			get_node("Label").set_text("Name joueur\t: "+ global.controlMenuNode.get_child(0).player_name + "\nID joueur\t: "+str(id_joueur))
 			#get_node("Spatial/Camera").init_pos()
 		'L': for i in range(4):
 				liste_joueur[i]=int(arra[i])
@@ -52,6 +53,7 @@ func _networkMessage(mess):
 			get_node("Spatial")._create()
 		'M':
 			if(arra[0]==id_joueur):
+				get_node("ColorRect6").hide()
 				if(my_cards[0]!=null):
 					play()
 				elif(my_cards[1]!=null):
@@ -60,6 +62,10 @@ func _networkMessage(mess):
 					play()
 				else:
 					send_mess("O "+str(id_joueur))
+			else:
+				var playing = get_node("ColorRect6").get_child(0)
+				playing.text = str(arra[0]) + " est en train de jouer"
+				get_node("ColorRect6").show()
 		'D':
 			if(int(arra[0])==id_joueur):
 				for i in range(3):
@@ -320,7 +326,6 @@ func _on_CheckBox37_pressed():
 
 
 func _on_Button_pressed():
-	
 	var sum = 0
 	for i in range(10):
 		sum+=pressed_answers[i]

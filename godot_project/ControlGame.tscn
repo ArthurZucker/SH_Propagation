@@ -794,6 +794,17 @@ margin_left = 10.5232
 margin_top = 5.0
 margin_right = -9.47681
 margin_bottom = -5.0
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+margin_left = -1.0
+margin_top = 28.0
+margin_right = 152.0
+margin_bottom = 61.0
+color = Color( 0, 0, 0, 0.376471 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 [connection signal="pressed" from="ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
 [connection signal="pressed" from="ButtonMenu2" to="." method="_on_ButtonMenu2_pressed"]
 [connection signal="pressed" from="ButtonMenu3" to="." method="_on_ButtonMenu3_pressed"]
