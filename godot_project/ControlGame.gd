@@ -9,6 +9,7 @@ var empty_hand
 var selected_card
 var bool_action
 var index
+var shuffle
 var scores = [null,null,null,null]
 func _ready():
 	get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name)
@@ -33,7 +34,10 @@ func _networkMessage(mess):
 			id_joueur = int(arra[0])
 			get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name + "ID joueur : "+str(id_joueur))
 		'L': for i in range(4):
-				liste_joueur[i]=arra[i]
+				liste_joueur[i]=int(arra[i])
+		'C':
+			shuffle = arra
+			get_node("Spatial")._create()
 		'M':
 			if(arra[0]==id_joueur):
 				if(my_cards[0]!=null):
@@ -77,12 +81,7 @@ func _networkMessage(mess):
 			root.remove_child(myself)
 			root.add_child(global.controlEndGameNode)
 		'S':
-			scores = arra
-			var root=get_tree().get_root()
-			var myself=root.get_child(1)
-			print (root,myself)
-			root.remove_child(myself)
-			root.add_child(global.controlScoreNode)
+			global.controlScoreNode._change()
 
 func _on_ButtonMenu_pressed():
 	var root=get_tree().get_root()
@@ -102,22 +101,27 @@ func play():
 
 func _on_Carte1_pressed():
 	selected_card = my_cards[0]
+	get_node("Popup").get_child(2).show()
 	index = 0
 
 func _on_Carte2_pressed():
 	selected_card = my_cards[1]
+	get_node("Popup").get_child(2).show()
 	index = 1
 
 func _on_Carte3_pressed():
 	selected_card = my_cards[2]
+	get_node("Popup").get_child(2).show()
 	index = 2
 
 func _on_Hide_pressed():
 	bool_action = -1
-	#get_node("Popup").set_visible(false)
 	get_node("Popup").popup_hide()
 
 func _on_Reveal_pressed():
 	bool_action = 1
-	#get_node("Popup").set_visible(false)
 	get_node("Popup").popup_hide()
+
+
+func _on_ButtonMenu2_pressed():
+	pass # Replace with function body.

@@ -5,8 +5,8 @@ extends Control
 
 # Constant Gui Settings
 #*******************************************************************************
-const GUI_POS = Vector2(10, 10)
-const GUI_SIZE = Vector2(200, 0)
+const GUI_POS = Vector2(20, 20)
+const GUI_SIZE = Vector2(180, 0)
 const DRAGGABLE = true
 
 const CUSTOM_BACKGROUND = false
