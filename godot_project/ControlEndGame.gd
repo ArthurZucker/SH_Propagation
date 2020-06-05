@@ -110,6 +110,12 @@ func _on_Button_pressed():
 	for i in range(10):
 		reponse+= str(answers[i])+" "
 	control.send_mess("Q "+str(control.id_joueur)+" " + reponse)
+	get_node("ScrollContainer/GridContainer/VBoxContainer10/Button").hide()
+	var label = Label.new()
+	label.align = label.ALIGN_CENTER
+	label.autowrap = true
+	label.text = "Merci pour votre réponse! Veuillez patienter le temps que les autres joueurs répondent"
+	get_node("ScrollContainer/GridContainer/VBoxContainer10").add_child(label)
 
 func _change():	
 	var root=get_tree().get_root()

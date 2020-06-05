@@ -282,6 +282,7 @@ int main()
 
 					sprintf(reply,"C%s", outputStrings);
 					sendMessageToGodotClient(udpClients[id].ipAddress,udpClients[id].port,reply);
+
 					// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
 					sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
 					broadcastMessage(reply);
@@ -292,6 +293,7 @@ int main()
 					if (nbClients==4)
 					{
 						// On envoie les cartes aux joueurs
+
 						for(int i=0;i<4;i++){
 							sprintf(reply,"D %d %d %d %d",i,deck[3*i],deck[3*i+1],deck[3*i+2]);
 							broadcastMessage(reply);

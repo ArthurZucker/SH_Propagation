@@ -25,27 +25,21 @@ var cardNodes=[
 	null, null]
 
 
-func _ready():
-	pass
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
-#	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
-#
-#	for j in range(len(cardNames)):
-#		var i = global.controlGameNode.shuffle[j]
-#		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*i,-40,(randf() * (0.2)) -0.1,cardNames[i])
+func _ready():
+	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
+	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
+	for i in range(len(cardNames)):
+		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,-40,(randf() * (0.2)) -0.1,cardNames[i])
 
 func _create():
 	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 	print("len cardnames "+str(len(cardNames)))
 	for j in range(len(cardNames)):
-		print(j)
-		print("shuffle[j]"+str(global.controlGameNode.shuffle[j]))
 		var i = global.controlGameNode.shuffle[j]
-		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*j,-40,(randf() * (0.2)) -0.1,cardNames[i])
-
+		cardNodes[j].set_translation(Vector3(randf() * (0.1)-0.05,0.05*i,-40))
+	emit_signal("over")
 func createBig(x,y,z,rv,cname):
 	# Create a new card instance
 	var mi=myMeshResource.new()
