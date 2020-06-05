@@ -10,10 +10,12 @@ var selected_card
 var bool_action
 var index
 var shuffle
+var hidden
 var scores = [null,null,null,null]
 func _ready():
 	get_node("Label").set_text("Name joueur : "+ global.controlMenuNode.get_child(0).player_name)
-
+	get_node("ColorRect").hide()
+	hidden = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -37,7 +39,7 @@ func _networkMessage(mess):
 				liste_joueur[i]=int(arra[i])
 		'C':
 			shuffle = arra
-			get_node("Spatial")._create()
+			yield(get_node("Spatial")._create(),"over")
 		'M':
 			if(arra[0]==id_joueur):
 				if(my_cards[0]!=null):
@@ -81,7 +83,7 @@ func _networkMessage(mess):
 			root.remove_child(myself)
 			root.add_child(global.controlEndGameNode)
 		'S':
-			global.controlScoreNode._change()
+			global.controlEndGameNode._change()
 
 func _on_ButtonMenu_pressed():
 	var root=get_tree().get_root()
@@ -91,6 +93,7 @@ func _on_ButtonMenu_pressed():
 	root.add_child(global.controlMenuNode)
 
 func play():
+	get_node("Popup/VBoxContainer/HBoxContainer").hide()
 	for i in  range(3):
 		if(my_cards[i] == null):
 			get_node("Popup").get_child(0).get_child(1).get_child(i).hide()
@@ -101,17 +104,17 @@ func play():
 
 func _on_Carte1_pressed():
 	selected_card = my_cards[0]
-	get_node("Popup").get_child(2).show()
+	get_node("Popup/VBoxContainer/HBoxContainer").show()
 	index = 0
 
 func _on_Carte2_pressed():
 	selected_card = my_cards[1]
-	get_node("Popup").get_child(2).show()
+	get_node("Popup/VBoxContainer/HBoxContainer").show()
 	index = 1
 
 func _on_Carte3_pressed():
 	selected_card = my_cards[2]
-	get_node("Popup").get_child(2).show()
+	get_node("Popup/VBoxContainer/HBoxContainer").show()
 	index = 2
 
 func _on_Hide_pressed():
@@ -124,4 +127,9 @@ func _on_Reveal_pressed():
 
 
 func _on_ButtonMenu2_pressed():
-	pass # Replace with function body.
+	if(hidden == true):
+		get_node("ColorRect").show()
+		hidden = false
+	else:
+		get_node("ColorRect").hide()
+		hidden = true

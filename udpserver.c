@@ -282,6 +282,7 @@ int main()
 
 					sprintf(reply,"C%s", outputStrings);
 					sendMessageToGodotClient(udpClients[id].ipAddress,udpClients[id].port,reply);
+
 					// Envoyer un message broadcast pour communiquer a tout le monde la liste des joueurs actuellement connectes
 					sprintf(reply,"L %s %s %s %s", udpClients[0].name, udpClients[1].name, udpClients[2].name, udpClients[3].name);
 					broadcastMessage(reply);
@@ -300,6 +301,8 @@ int main()
 						sprintf(reply,"M %d",joueurCourant);
 						broadcastMessage(reply);
 
+						sprintf(reply,"Q");
+						broadcastMessage(reply);
 						fsmServer=1;
 					}
 					break;
@@ -339,9 +342,6 @@ int main()
 							sprintf(reply,"E %d",id_joueur);
 							broadcastMessage(reply);
 						}
-
-						// sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
-						// broadcastMessage(reply); // pour tester score
 
 						joueurCourant++;
 		        joueurCourant=joueurCourant%4;
@@ -415,7 +415,7 @@ int main()
 						answered++;
 						printf("%d \n",answered);
 						//Envoie des scores
-						if (answered==4) {
+						if (answered==1) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
 							broadcastMessage(reply);
 							fsmServer=0;

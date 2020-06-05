@@ -25,24 +25,20 @@ var cardNodes=[
 	null, null]
 
 
-func _ready():
-	pass
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-#	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
-#	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
-#
-#	for j in range(len(cardNames)):
-#		#var i = global.controlGameNode.shuffle[j]
-#		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*j,-40,(randf() * (0.2)) -0.1,cardNames[j])
+func _ready():
+	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
+	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
+	for i in range(len(cardNames)):
+		cardNodes[i]=createBig((randf() * (0.1)) -0.05,0.05*i,-40,(randf() * (0.2)) -0.1,cardNames[i])
 
 func _create():
 	spatialNode=get_tree().get_root().get_node("ControlGame").get_node("Spatial")#récupere un pointeur vers le noeud spatiale
 	myMeshResource = load("res://MyMesh.gd")#charge pointeur sur la classe
 	for j in range(len(cardNames)):
 		var i = global.controlGameNode.shuffle[j]
-		cardNodes[j]=createBig((randf() * (0.1)) -0.05,0.05*j,-40,(randf() * (0.2)) -0.1,cardNames[i])
-
+		cardNodes[j].set_translation(Vector3(randf() * (0.1)-0.05,0.05*i,-40))
+	
 func createBig(x,y,z,rv,cname):
 	# Create a new card instance
 	var mi=myMeshResource.new()
@@ -78,7 +74,7 @@ func hideCard(num_card):
 	mesh._setEndPosition(global.pos_hide_card+Vector3(0,global.controlGameNode.cpt_card_hide*0.1,0))
 	mesh.toBeMoved=1
 	mesh.flip=1
-	
+
 func handCard(data):
 	var id_player = data[0]
 	for i in range(3):
@@ -92,7 +88,7 @@ func handCard(data):
 		else:
 			mesh.flip=0
 			mesh.set_rotation(Vector3(0,PI,-PI/2))
-		
+
 func drawCard(data,empty_hand):
 	var id_player = data[0]
 	var num_card = data[1]
@@ -105,4 +101,3 @@ func drawCard(data,empty_hand):
 	else:
 		mesh.flip=0
 		mesh.set_rotation(Vector3(0,PI,-PI/2))
-
