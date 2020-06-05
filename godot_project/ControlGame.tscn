@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://ControlGame.gd" type="Script" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -22,10 +22,25 @@ font_data = ExtResource( 12 )
 
 [sub_resource type="ButtonGroup" id=4]
 
-[sub_resource type="DynamicFont" id=5]
-font_data = ExtResource( 12 )
-
 [sub_resource type="ButtonGroup" id=6]
+
+[sub_resource type="ButtonGroup" id=7]
+
+[sub_resource type="ButtonGroup" id=8]
+
+[sub_resource type="ButtonGroup" id=9]
+
+[sub_resource type="ButtonGroup" id=10]
+
+[sub_resource type="ButtonGroup" id=11]
+
+[sub_resource type="ButtonGroup" id=12]
+
+[sub_resource type="ButtonGroup" id=13]
+
+[sub_resource type="ButtonGroup" id=14]
+
+[sub_resource type="ButtonGroup" id=15]
 
 [node name="ControlGame" type="Control"]
 anchor_right = 1.0
@@ -76,6 +91,20 @@ margin_right = 76.0
 margin_bottom = 25.0
 custom_fonts/font = SubResource( 2 )
 text = "Introduction"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMenu3" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -76.0
+margin_top = -25.0
+margin_right = 76.0
+custom_fonts/font = SubResource( 2 )
+text = "Vers la solution"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -183,18 +212,11 @@ margin_bottom = 20.0
 group = SubResource( 4 )
 text = "Reveal"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -190.0
-margin_bottom = 19.0
-custom_fonts/font = SubResource( 5 )
-align = 2
-autowrap = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_bottom = 62.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -251,15 +273,78 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ColorRect5" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -217.5
+margin_top = -248.0
+margin_right = 217.5
+margin_bottom = 248.0
+color = Color( 0.364706, 0.345098, 0.345098, 0.666667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+text = "La solution de l'enquête : 
+Un groupe d'activistes pour les droits des animaux mène des actions illégales à Oslo : la libération
+d'animaux du zoo (22), de plusieurs animaleries (23) et d'un laboratoire utilisant des animaux à des fin
+d'expérimentation (26). Pour s'introduire dans le laboratoire, ils volent la carte d'accès d'un employé (7), qui
+se retrouve enregistré dans le système alors qu'il nest pas dans le bâtiment (27).
+
+À 22h00, Emma quitte son bureau et se rend au laboratoire 12 pour prélever des échantillons (21)
+sur une souris infectée par le virus Dadaral (32), un virus hautement contagieux et pour lequel il
+n'existe aucun remède (14). En entrant dans le laboratoire, elle tombe nez-à-nez avec une activiste
+qui vient tout juste de relâcher cette souris. Pour empêcher la propagation et détruire le virus, ST à. À Emma frappe l'intruse à la tête (24), bloque la porte d'accès au laboratoire (12) et déclenche un incendie (2).Malheureusement, cet acte héroïque implique son propre sacrifice (13).
+
+N'ayant pas son téléphone portable avec elle (6 et 29), Emma improvise pour tenter
+d'expliquer ses actes : elle règle sa montre sur 11h36, la brise et la plonge dans l'eau
+pour la protéger du feu (28). En effet, le code d'urgence pour avertir d’une propagation virale est le 1136 (25)."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -213.0
+margin_top = -63.0
+margin_right = 213.0
+color = Color( 0.364706, 0.345098, 0.345098, 0.666667 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ColorRect3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Merci d'avoir répondu! Veuillez patientez les autres joueurs se creusent la tête!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ColorRect2" type="ColorRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -217.0
-margin_top = -161.0
+margin_top = -160.477
 margin_right = 218.0
-margin_bottom = 113.0
+margin_bottom = 113.523
 color = Color( 0.364706, 0.345098, 0.345098, 0.666667 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -278,373 +363,483 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ColorRect2/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect2/ScrollContainer"]
 margin_right = 435.0
-margin_bottom = 1364.0
+margin_bottom = 1388.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q1" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
+margin_right = 435.0
+margin_bottom = 126.0
+
+[node name="Label" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_right = 435.0
 margin_bottom = 14.0
 text = "Question 1 : De qui est le cadavre retrouvé? "
 align = 1
 
-[node name="CheckBox" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="CheckBox" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 18.0
 margin_right = 435.0
 margin_bottom = 42.0
 group = SubResource( 6 )
 text = "A : D'une employée du laboratoire"
 
-[node name="CheckBox2" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="CheckBox2" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 46.0
 margin_right = 435.0
 margin_bottom = 70.0
 group = SubResource( 6 )
 text = "B : D'une espionne"
 
-[node name="CheckBox3" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="CheckBox3" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 74.0
 margin_right = 435.0
 margin_bottom = 98.0
 group = SubResource( 6 )
 text = "C: D'une activiste des droits des animaux"
 
-[node name="CheckBox4" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="CheckBox4" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q1"]
 margin_top = 102.0
 margin_right = 435.0
 margin_bottom = 126.0
 group = SubResource( 6 )
 text = "D : D'une autre personne"
 
-[node name="Label2" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q2" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 130.0
 margin_right = 435.0
-margin_bottom = 161.0
+margin_bottom = 273.0
+
+[node name="Label2" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
+margin_right = 435.0
+margin_bottom = 31.0
 text = "Question 2 : De qui est le cadavre retrouvé avec un traumatisme crânien?"
 align = 1
 autowrap = true
 
-[node name="CheckBox8" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 165.0
+[node name="CheckBox8" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
+margin_top = 35.0
 margin_right = 435.0
-margin_bottom = 189.0
-group = SubResource( 6 )
+margin_bottom = 59.0
+group = SubResource( 7 )
 text = "A : D'une employée du laboratoire"
 
-[node name="CheckBox7" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 193.0
+[node name="CheckBox7" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
+margin_top = 63.0
 margin_right = 435.0
-margin_bottom = 217.0
-group = SubResource( 6 )
+margin_bottom = 87.0
+group = SubResource( 7 )
 text = "B : D'une espionne"
 
-[node name="CheckBox6" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 221.0
+[node name="CheckBox6" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
+margin_top = 91.0
 margin_right = 435.0
-margin_bottom = 245.0
-group = SubResource( 6 )
+margin_bottom = 115.0
+group = SubResource( 7 )
 text = "C : D'une activiste des droits des animaux"
 
-[node name="CheckBox5" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 249.0
+[node name="CheckBox5" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q2"]
+margin_top = 119.0
 margin_right = 435.0
-margin_bottom = 273.0
-group = SubResource( 6 )
+margin_bottom = 143.0
+group = SubResource( 7 )
 text = "D : D'une autre personne "
 
-[node name="Label3" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q3" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 277.0
 margin_right = 435.0
-margin_bottom = 291.0
+margin_bottom = 403.0
+
+[node name="Label3" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
+margin_right = 435.0
+margin_bottom = 14.0
 text = "Question 3 : Qui a causé le traumatisme crânien?"
 align = 1
 autowrap = true
 
-[node name="CheckBox12" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 295.0
+[node name="CheckBox12" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
+margin_top = 18.0
 margin_right = 435.0
-margin_bottom = 319.0
-group = SubResource( 6 )
+margin_bottom = 42.0
+group = SubResource( 8 )
 text = "A : Emma"
 
-[node name="CheckBox11" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 323.0
+[node name="CheckBox11" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
+margin_top = 46.0
 margin_right = 435.0
-margin_bottom = 347.0
-group = SubResource( 6 )
+margin_bottom = 70.0
+group = SubResource( 8 )
 text = "B : Mia"
 
-[node name="CheckBox10" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 351.0
+[node name="CheckBox10" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
+margin_top = 74.0
 margin_right = 435.0
-margin_bottom = 375.0
-group = SubResource( 6 )
+margin_bottom = 98.0
+group = SubResource( 8 )
 text = "C : Magnus"
 
-[node name="CheckBox9" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 379.0
+[node name="CheckBox9" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q3"]
+margin_top = 102.0
 margin_right = 435.0
-margin_bottom = 403.0
-group = SubResource( 6 )
+margin_bottom = 126.0
+group = SubResource( 8 )
 text = "D : Une autre personne"
 
-[node name="Label4" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q4" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 407.0
 margin_right = 435.0
-margin_bottom = 438.0
+margin_bottom = 550.0
+
+[node name="Label4" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
+margin_right = 435.0
+margin_bottom = 31.0
 text = "Question 4 : Quel acte a-t-on commis ou prévoyait-on de commettre avant le début de l'incendie?"
 align = 1
 autowrap = true
 
-[node name="CheckBox16" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 442.0
+[node name="CheckBox16" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
+margin_top = 35.0
 margin_right = 435.0
-margin_bottom = 466.0
-group = SubResource( 6 )
+margin_bottom = 59.0
+group = SubResource( 9 )
 text = "A : Un espionnage industriel"
 
-[node name="CheckBox15" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 470.0
+[node name="CheckBox15" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
+margin_top = 63.0
 margin_right = 435.0
-margin_bottom = 494.0
-group = SubResource( 6 )
+margin_bottom = 87.0
+group = SubResource( 9 )
 text = "B : Un acte militant"
 
-[node name="CheckBox14" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 498.0
+[node name="CheckBox14" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
+margin_top = 91.0
 margin_right = 435.0
-margin_bottom = 522.0
-group = SubResource( 6 )
+margin_bottom = 115.0
+group = SubResource( 9 )
 text = "C : Un crime violent"
 
-[node name="CheckBox13" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 526.0
+[node name="CheckBox13" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q4"]
+margin_top = 119.0
 margin_right = 435.0
-margin_bottom = 550.0
-group = SubResource( 6 )
+margin_bottom = 143.0
+group = SubResource( 9 )
 text = "D : Un rendez-vous galant"
 
-[node name="Label5" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q5" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 554.0
 margin_right = 435.0
-margin_bottom = 568.0
+margin_bottom = 680.0
+
+[node name="Label5" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
+margin_right = 435.0
+margin_bottom = 14.0
 text = "Question 5 : Comment l'incendie a-t-il démarré?"
 align = 1
 autowrap = true
 
-[node name="CheckBox20" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 572.0
+[node name="CheckBox20" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
+margin_top = 18.0
 margin_right = 435.0
-margin_bottom = 596.0
-group = SubResource( 6 )
+margin_bottom = 42.0
+group = SubResource( 10 )
 text = "A : Un employé a intentionnellement mis le feu"
 
-[node name="CheckBox19" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 600.0
+[node name="CheckBox19" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
+margin_top = 46.0
 margin_right = 435.0
-margin_bottom = 624.0
-group = SubResource( 6 )
+margin_bottom = 70.0
+group = SubResource( 10 )
 text = "B : Un employé a accidentellement mis le feu"
 
-[node name="CheckBox18" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 628.0
+[node name="CheckBox18" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
+margin_top = 74.0
 margin_right = 435.0
-margin_bottom = 652.0
-group = SubResource( 6 )
+margin_bottom = 98.0
+group = SubResource( 10 )
 text = "C : Un intrus a intentionnellement mis le feu"
 
-[node name="CheckBox17" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 656.0
+[node name="CheckBox17" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q5"]
+margin_top = 102.0
 margin_right = 435.0
-margin_bottom = 680.0
-group = SubResource( 6 )
+margin_bottom = 126.0
+group = SubResource( 10 )
 text = "D : Un intrus a accidentellement mis le feu"
 
-[node name="Label6" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q6" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 684.0
 margin_right = 435.0
-margin_bottom = 698.0
+margin_bottom = 810.0
+
+[node name="Label6" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
+margin_right = 435.0
+margin_bottom = 14.0
 text = "Question 6 : Où a débuté l'incendie?"
 align = 1
 autowrap = true
 
-[node name="CheckBox24" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 702.0
+[node name="CheckBox24" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
+margin_top = 18.0
 margin_right = 435.0
-margin_bottom = 726.0
-group = SubResource( 6 )
+margin_bottom = 42.0
+group = SubResource( 11 )
 text = "A : Dans le laboratoire 11"
 
-[node name="CheckBox23" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 730.0
+[node name="CheckBox23" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
+margin_top = 46.0
 margin_right = 435.0
-margin_bottom = 754.0
-group = SubResource( 6 )
+margin_bottom = 70.0
+group = SubResource( 11 )
 text = "B : Dans le laboratoire 12"
 
-[node name="CheckBox22" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 758.0
+[node name="CheckBox22" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
+margin_top = 74.0
 margin_right = 435.0
-margin_bottom = 782.0
-group = SubResource( 6 )
+margin_bottom = 98.0
+group = SubResource( 11 )
 text = "C : Dans le laboratoire 13"
 
-[node name="CheckBox21" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 786.0
+[node name="CheckBox21" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q6"]
+margin_top = 102.0
 margin_right = 435.0
-margin_bottom = 810.0
-group = SubResource( 6 )
+margin_bottom = 126.0
+group = SubResource( 11 )
 text = "D : Ailleurs"
 
-[node name="Label7" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q7" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 814.0
 margin_right = 435.0
-margin_bottom = 828.0
+margin_bottom = 940.0
+
+[node name="Label7" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
+margin_right = 435.0
+margin_bottom = 14.0
 text = "Question 7 : Pourquoi la porte d'accès a-t-elle été verrouillée?"
 align = 1
 autowrap = true
 
-[node name="CheckBox28" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 832.0
+[node name="CheckBox28" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
+margin_top = 18.0
 margin_right = 435.0
-margin_bottom = 856.0
-group = SubResource( 6 )
+margin_bottom = 42.0
+group = SubResource( 12 )
 text = "A : Pour empêcher quiconque de sortir"
 
-[node name="CheckBox27" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 860.0
+[node name="CheckBox27" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
+margin_top = 46.0
 margin_right = 435.0
-margin_bottom = 884.0
-group = SubResource( 6 )
+margin_bottom = 70.0
+group = SubResource( 12 )
 text = "B : Pour éviter d'être interrompu"
 
-[node name="CheckBox26" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 888.0
+[node name="CheckBox26" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
+margin_top = 74.0
 margin_right = 435.0
-margin_bottom = 912.0
-group = SubResource( 6 )
+margin_bottom = 98.0
+group = SubResource( 12 )
 text = "C : Pour éviter la propagation d'un virus"
 
-[node name="CheckBox25" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 916.0
+[node name="CheckBox25" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q7"]
+margin_top = 102.0
 margin_right = 435.0
-margin_bottom = 940.0
-group = SubResource( 6 )
+margin_bottom = 126.0
+group = SubResource( 12 )
 text = "D : Pour éviter la propagation du feu"
 
-[node name="Label8" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q8" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 944.0
 margin_right = 435.0
-margin_bottom = 975.0
+margin_bottom = 1087.0
+
+[node name="Label8" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
+margin_right = 435.0
+margin_bottom = 31.0
 text = "Question 8 : Pourquoi une montre a-t-elle été immergée dans un bécher?"
 align = 1
 autowrap = true
 
-[node name="CheckBox32" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 979.0
+[node name="CheckBox32" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
+margin_top = 35.0
 margin_right = 435.0
-margin_bottom = 1003.0
-group = SubResource( 6 )
+margin_bottom = 59.0
+group = SubResource( 13 )
 text = "A : Pour désigner le coupable"
 
-[node name="CheckBox31" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1007.0
+[node name="CheckBox31" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
+margin_top = 63.0
 margin_right = 435.0
-margin_bottom = 1031.0
-group = SubResource( 6 )
+margin_bottom = 87.0
+group = SubResource( 13 )
 text = "B : Pour avertir du danger"
 
-[node name="CheckBox30" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1035.0
+[node name="CheckBox30" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
+margin_top = 91.0
 margin_right = 435.0
-margin_bottom = 1059.0
-group = SubResource( 6 )
+margin_bottom = 115.0
+group = SubResource( 13 )
 text = "C : Pour expliquer ses actes"
 
-[node name="CheckBox29" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1063.0
+[node name="CheckBox29" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q8"]
+margin_top = 119.0
 margin_right = 435.0
-margin_bottom = 1087.0
-group = SubResource( 6 )
+margin_bottom = 143.0
+group = SubResource( 13 )
 text = "D : Pour indiquer une heure spécifique"
 
-[node name="Label9" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q9" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 1091.0
 margin_right = 435.0
-margin_bottom = 1105.0
+margin_bottom = 1217.0
+
+[node name="Label9" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
+margin_right = 435.0
+margin_bottom = 14.0
 text = "Question 9 : Pourquoi le casier de Mia est-il vide?"
 align = 1
 autowrap = true
 
-[node name="CheckBox36" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1109.0
+[node name="CheckBox36" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
+margin_top = 18.0
 margin_right = 435.0
-margin_bottom = 1133.0
-group = SubResource( 6 )
+margin_bottom = 42.0
+group = SubResource( 14 )
 text = "A : Parce qu'elle était sortie fumer"
 
-[node name="CheckBox35" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1137.0
+[node name="CheckBox35" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
+margin_top = 46.0
 margin_right = 435.0
-margin_bottom = 1161.0
-group = SubResource( 6 )
+margin_bottom = 70.0
+group = SubResource( 14 )
 text = "B : Parce qu'elle se préparait a fuir les lieux"
 
-[node name="CheckBox34" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1165.0
+[node name="CheckBox34" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
+margin_top = 74.0
 margin_right = 435.0
-margin_bottom = 1189.0
-group = SubResource( 6 )
+margin_bottom = 98.0
+group = SubResource( 14 )
 text = "C : Parce qu'elle venait d'être licenciée"
 
-[node name="CheckBox33" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1193.0
+[node name="CheckBox33" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q9"]
+margin_top = 102.0
 margin_right = 435.0
-margin_bottom = 1217.0
-group = SubResource( 6 )
+margin_bottom = 126.0
+group = SubResource( 14 )
 text = "D : C'est non pertinent pour l'enquête"
 
-[node name="Label10" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
+[node name="Q10" type="VBoxContainer" parent="ColorRect2/ScrollContainer/VBoxContainer"]
 margin_top = 1221.0
 margin_right = 435.0
-margin_bottom = 1252.0
+margin_bottom = 1364.0
+
+[node name="Label10" type="Label" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
+margin_right = 435.0
+margin_bottom = 31.0
 text = "Question 10 : Pourquoi Olivier apparait-il dans le registre des entrées?"
 align = 1
 autowrap = true
 
-[node name="CheckBox40" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1256.0
+[node name="CheckBox40" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
+margin_top = 35.0
 margin_right = 435.0
-margin_bottom = 1280.0
-group = SubResource( 6 )
+margin_bottom = 59.0
+group = SubResource( 15 )
 text = "A : Parce qu'il était dans le bâtiment"
 
-[node name="CheckBox39" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1284.0
+[node name="CheckBox39" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
+margin_top = 63.0
 margin_right = 435.0
-margin_bottom = 1308.0
-group = SubResource( 6 )
+margin_bottom = 87.0
+group = SubResource( 15 )
 text = "B : Parce quelqu'un voulait qu'il y apparaisse"
 
-[node name="CheckBox38" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1312.0
+[node name="CheckBox38" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
+margin_top = 91.0
 margin_right = 435.0
-margin_bottom = 1336.0
-group = SubResource( 6 )
+margin_bottom = 115.0
+group = SubResource( 15 )
 text = "C : Parce que quelqu'un d'autre a utilisé son badge d'accès"
 
-[node name="CheckBox37" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer2"]
-margin_top = 1340.0
+[node name="CheckBox37" type="CheckBox" parent="ColorRect2/ScrollContainer/VBoxContainer/Q10"]
+margin_top = 119.0
 margin_right = 435.0
-margin_bottom = 1364.0
-group = SubResource( 6 )
+margin_bottom = 143.0
+group = SubResource( 15 )
 text = "D : C'est non pertinent pour l'enquête"
+
+[node name="Button" type="Button" parent="ColorRect2/ScrollContainer/VBoxContainer"]
+margin_top = 1368.0
+margin_right = 435.0
+margin_bottom = 1388.0
+text = "Soumettre"
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -437.0
+margin_top = -63.5
+margin_right = 437.0
+margin_bottom = 63.5
+color = Color( 0, 0, 0, 0.337255 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="RichTextLabel" parent="ColorRect4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.5232
+margin_top = 5.0
+margin_right = -9.47681
+margin_bottom = -5.0
 [connection signal="pressed" from="ButtonMenu" to="." method="_on_ButtonMenu_pressed"]
 [connection signal="pressed" from="ButtonMenu2" to="." method="_on_ButtonMenu2_pressed"]
+[connection signal="pressed" from="ButtonMenu3" to="." method="_on_ButtonMenu3_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte1" to="." method="_on_Carte1_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte2" to="." method="_on_Carte2_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/Card_Select/Carte3" to="." method="_on_Carte3_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HR/Hide" to="." method="_on_Hide_pressed"]
 [connection signal="pressed" from="Popup/VBoxContainer/HR/Reveal" to="." method="_on_Reveal_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q1/CheckBox" to="." method="_on_CheckBox_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q1/CheckBox2" to="." method="_on_CheckBox2_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q1/CheckBox3" to="." method="_on_CheckBox3_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q1/CheckBox4" to="." method="_on_CheckBox4_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q2/CheckBox8" to="." method="_on_CheckBox8_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q2/CheckBox7" to="." method="_on_CheckBox7_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q2/CheckBox6" to="." method="_on_CheckBox6_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q2/CheckBox5" to="." method="_on_CheckBox5_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q3/CheckBox12" to="." method="_on_CheckBox12_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q3/CheckBox11" to="." method="_on_CheckBox11_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q3/CheckBox10" to="." method="_on_CheckBox10_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q3/CheckBox9" to="." method="_on_CheckBox9_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q4/CheckBox16" to="." method="_on_CheckBox16_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q4/CheckBox15" to="." method="_on_CheckBox15_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q4/CheckBox14" to="." method="_on_CheckBox14_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q4/CheckBox13" to="." method="_on_CheckBox13_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q5/CheckBox20" to="." method="_on_CheckBox20_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q5/CheckBox19" to="." method="_on_CheckBox19_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q5/CheckBox18" to="." method="_on_CheckBox18_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q5/CheckBox17" to="." method="_on_CheckBox17_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q6/CheckBox24" to="." method="_on_CheckBox24_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q6/CheckBox23" to="." method="_on_CheckBox23_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q6/CheckBox22" to="." method="_on_CheckBox22_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q6/CheckBox21" to="." method="_on_CheckBox21_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q7/CheckBox28" to="." method="_on_CheckBox28_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q7/CheckBox27" to="." method="_on_CheckBox27_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q7/CheckBox26" to="." method="_on_CheckBox26_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q7/CheckBox25" to="." method="_on_CheckBox25_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q8/CheckBox32" to="." method="_on_CheckBox32_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q8/CheckBox31" to="." method="_on_CheckBox31_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q8/CheckBox30" to="." method="_on_CheckBox30_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q8/CheckBox29" to="." method="_on_CheckBox29_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q9/CheckBox36" to="." method="_on_CheckBox36_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q9/CheckBox35" to="." method="_on_CheckBox35_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q9/CheckBox34" to="." method="_on_CheckBox34_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q9/CheckBox33" to="." method="_on_CheckBox33_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q10/CheckBox40" to="." method="_on_CheckBox40_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q10/CheckBox39" to="." method="_on_CheckBox39_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q10/CheckBox38" to="." method="_on_CheckBox38_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Q10/CheckBox37" to="." method="_on_CheckBox37_pressed"]
+[connection signal="pressed" from="ColorRect2/ScrollContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

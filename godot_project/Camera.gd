@@ -275,10 +275,10 @@ func set_distance(value):
 func init_pos():
 	match global.controlGameNode.id_joueur:
 		0:
-			translate(Vector3(-25,2,-20))
+			global_translate(Vector3(-25,2,-20))
 		1:
-			translate(Vector3(25,2,-20))
+			global_translate(Vector3(25,2,-20))
 		2:
-			translate(Vector3(-25,2,20))
+			global_translate(Vector3(-25,2,20))
 		3:
-			translate(Vector3(25,2,20))
+			global_translate(Vector3(25,2,20))
