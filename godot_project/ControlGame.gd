@@ -15,7 +15,7 @@ var shuffle														# Tableau stockant le mélange des cartes pour qu'elles
 var introduction_is_hidden= true								# Permet de gérer l'affichage de l'introduction
 var solution_is_hidden											# Permet de gérer l'e rectangle de affichage de la solution'
 var scores = [null,null,null,null]								# Stock les scores
-
+var audio_playing = false
 func _ready():
 	# On écrit le nom du joueur
 	get_node("infos").set_text("Name joueur\t: "+ global.controlMenuNode.get_child(0).player_name)
@@ -183,6 +183,9 @@ func _on_Reveal_pressed():
 	get_node("play/VBoxContainer/Card_Select/Carte3").set_pressed(false)
 
 func _on_ButtonIntro_pressed(): # On veut afficher l'intro
+	if(audio_playing == false):
+		audio_playing = true
+		get_node("Spatial/AudioStreamPlayer").play()
 	get_node("Scores").hide()
 	if(introduction_is_hidden== true):
 		get_node("Introduction").show()

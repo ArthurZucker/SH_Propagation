@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://ControlGame.gd" type="Script" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
 [ext_resource path="res://Spatial.gd" type="Script" id=3]
 [ext_resource path="res://Table.obj" type="ArrayMesh" id=4]
 [ext_resource path="res://TextureWood2.jpg" type="Texture" id=5]
+[ext_resource path="res://audio_intro.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Carte1.gd" type="Script" id=7]
 [ext_resource path="res://Popup.gd" type="Script" id=8]
 [ext_resource path="res://Carte2.gd" type="Script" id=9]
@@ -60,6 +61,10 @@ script = ExtResource( 2 )
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -3, 0 )
 mesh = ExtResource( 4 )
 material = SubResource( 1 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Spatial"]
+stream = ExtResource( 6 )
+volume_db = 5.0
 
 [node name="ButtonMenu" type="Button" parent="."]
 margin_right = 12.0
