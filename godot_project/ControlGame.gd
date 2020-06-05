@@ -338,7 +338,7 @@ func _on_Button_pressed():
 		get_node("ColorRect2").hide()
 		get_node("ColorRect3").show()
 	else:
-		print("vous n'avez pas répondu à toutes les question")
+		print("vous n'avez pas répondu à toutes les questions")
 		
 		
 func _on_ButtonMenu3_pressed():
