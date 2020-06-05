@@ -22,7 +22,6 @@ func _ready():
 			chaine += "Microft Holmes : Ne laissez jamais la réputation de votre frère entacher votre talent. Ce n'est pas pour rien que vous travaillez au services de Sa Majesté"
 		elif(score >=18):
 			chaine += "Sherlock Holmes : Excellent. Vous êtes son égal."
-
 		label.text=chaine
 		
 	

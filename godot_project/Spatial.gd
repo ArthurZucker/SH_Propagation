@@ -39,7 +39,7 @@ func _create():
 	for j in range(len(cardNames)):
 		var i = global.controlGameNode.shuffle[j]
 		cardNodes[j].set_translation(Vector3(randf() * (0.1)-0.05,0.05*i,-40))
-	emit_signal("over")
+	
 func createBig(x,y,z,rv,cname):
 	# Create a new card instance
 	var mi=myMeshResource.new()
