@@ -27,15 +27,16 @@ typedef struct chaine
 	struct chaine *suivant;
 }Chaine;
 
-int nbClients;
-int answers[10] = {1,3,1,2,1,2,3,3,4,3};
-int deck[32]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};
-int deckBadCard[32]={0,0,-1,-1,-1,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,0};//{3,4,5,8,9,10,11,15,16,17,18,19,20,30,31}
+int nbClients; // nombre de clients
+int answers[10] = {1,3,1,2,1,2,3,3,4,3};// réponse au questionnaire
+int deck[32]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32};// paquet de cartes
+int deckBadCard[32]={0,0,-1,-1,-1,0,0,-1,-1,-1,-1,0,0,0,-1,-1,-1,-1,-1,-1,0,0,0,0,0,0,0,0,0,-1,-1,0};//{3,4,5,8,9,10,11,15,16,17,18,19,20,30,31} les cartes qui enlèvent des points
 
-int fsmServer;
-int joueurCourant;
-int tableScore[4];
+int fsmServer; //pour savoir si 4 joueurs sont connectes
+int joueurCourant; // joueur qui doit jouer
+int tableScore[4]; // tableau des scores des joueurs
 
+//Fonction pour melanger les cartes
 void melangerDeck()
 {
 	int i;
@@ -51,7 +52,7 @@ void melangerDeck()
 		deck[index2]=tmp;
 	}
 }
-
+//Fonction pour print la pioche
 void printL(Chaine* chaine){
  	Chaine *temp = chaine;
 	while(temp->suivant != NULL){
@@ -60,13 +61,13 @@ void printL(Chaine* chaine){
 	}
 	printf("%d\n",temp->num_card );
 }
-
+//Fonction qui renvoie la carte à piocher
 int piocher_carte(Chaine *head){
 	int temp = head->num_card;
 	*head = *head->suivant;
 	return temp;
 }
-
+//Fonction qui créer une liste qui va correspondre à la pioche
 Chaine *init_pioche(){
 	Chaine *head = (Chaine *)malloc(sizeof(Chaine));
 	head->num_card = deck[12];
@@ -80,7 +81,7 @@ Chaine *init_pioche(){
 	temp->suivant=NULL;
 	return head;
 }
-
+//Fonction qui print les clients qui sont connectes
 void printClients()
 {
 	int i;
@@ -88,7 +89,7 @@ void printClients()
 	for (i=0;i<nbClients;i++)
 		printf("%d: %s %5.5d %s\n",i,udpClients[i].ipAddress,udpClients[i].port,udpClients[i].name);
 }
-
+//Fonction qui permet de trouver l'id du client par son nom
 int findClientByName(char *name)
 {
 	int i;
@@ -98,7 +99,7 @@ int findClientByName(char *name)
 			return i;
 	return -1;
 }
-
+//Fonction qui permet d'envoyer un message à un client godot
 void sendMessageToGodotClient(char *hostname,int portno, char *mess)
 {
 	/* socket: create the socket */
@@ -175,7 +176,7 @@ void sendMessageToGodotClient(char *hostname,int portno, char *mess)
 	}
 	close(socketGodot);
 }
-
+//Fonction qui permet d'envoyer un message à tous les clients godot connectes
 void broadcastMessage(char *mess)
 {
 	int i;
@@ -280,7 +281,7 @@ int main()
 
 
 
-					// Si le nombre de joueurs atteint 4, alors on peut lancer le jeu
+					// Si le nombre de joueurs atteint 4, alors on peut lancer le jeu en distribuant les cartes
 					if (nbClients==4)
 					{
 						// On envoie les cartes aux joueurs
@@ -292,8 +293,6 @@ int main()
 						sprintf(reply,"M %d",joueurCourant);
 						broadcastMessage(reply);
 
-						// sprintf(reply,"Q");
-						// broadcastMessage(reply);
 						fsmServer=1;
 					}
 					break;
@@ -321,6 +320,7 @@ int main()
 								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
 								broadcastMessage(reply);
 							}
+							//la derniere carte de la pioche
 							else{
 								int last_card = head->num_card;
 								head=NULL;
@@ -333,7 +333,7 @@ int main()
 							sprintf(reply,"E %d",id_joueur);
 							sendMessageToGodotClient(udpClients[id_joueur].ipAddress,udpClients[id_joueur].port,reply);
 						}
-
+						//chercher le prochain joueur qui doit jouer
 						joueurCourant++;
 		        joueurCourant=joueurCourant%4;
 		        while(udpClients[joueurCourant].etat==0){
@@ -354,6 +354,7 @@ int main()
 								sprintf(reply,"P %d %d",id_joueur,piocher_carte(head));
 								broadcastMessage(reply);
 							}
+							//la derniere carte de la pioche
 							else{
 								int last_card = head->num_card;
 								head=NULL;
@@ -366,7 +367,7 @@ int main()
 							sprintf(reply,"E %d",id_joueur);
 							sendMessageToGodotClient(udpClients[id_joueur].ipAddress,udpClients[id_joueur].port,reply);
 						}
-
+						//chercher le prochain joueur qui doit jouer
 						joueurCourant++;
 		        joueurCourant=joueurCourant%4;
 		        while(udpClients[joueurCourant].etat==0){
@@ -376,11 +377,11 @@ int main()
 		        sprintf(reply,"M %d",joueurCourant);
 		        broadcastMessage(reply);
 						break;
-					// out joueur n'a plus de carte
+					// out : joueur n'a plus de carte
 					case 'O':
 						sscanf(buffer,"O %d",&id_joueur);
 						udpClients[id_joueur].etat=0;
-
+						// voir si ils ont tous plus de cartes
 						if(udpClients[0].etat==0 && udpClients[1].etat==0 && udpClients[2].etat==0 && udpClients[3].etat==0){
 							sprintf(reply,"Q");
 							broadcastMessage(reply);
@@ -404,7 +405,6 @@ int main()
 								tableScore[id_joueur]+=2;
 						}
 						answered++;
-
 						//Envoie les scores
 						if (answered==4) {
 							sprintf(reply,"S %d %d %d %d",tableScore[0],tableScore[1],tableScore[2],tableScore[3]);
